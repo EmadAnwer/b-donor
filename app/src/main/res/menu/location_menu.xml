@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:title="Mokkattam" />
+    <item
+        android:title="Masr El-Gededa" />
+    <item
+        android:title="Rehab" />
+    <item
+        android:title="Fifth settlement "/>
+    <item
+        android:title="Madinet Nasr"/>
+    <item
+        android:title="Madinity"/>
+    <item
+        android:title="Elshrouk"/>
+    <item
+        android:title="El-Obour"/>
+    <item
+        android:title="Maaadi"/>
+
+</menu>

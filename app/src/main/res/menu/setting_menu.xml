@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigate_to_privacy"
+        android:title="Privacy and Security" />
+
+    <item
+        android:id="@+id/navigate_to_about"
+        android:iconTint="@color/black"
+        android:title="About" />
+
+    <item
+        android:id="@+id/navigate_to_help"
+        android:iconTint="@color/black"
+        android:title="Help and Support" />
+
+    <item
+        android:id="@+id/navigate_to_Rating"
+        android:icon="@drawable/ic_notifications_black_24dp"
+        android:title="Rating" />
+    <item
+        android:id="@+id/navigate_to_logout"
+        android:iconTint="@color/black"
+        android:title="Log Out" />
+
+</menu>

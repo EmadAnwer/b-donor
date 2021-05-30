@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.gradandroidfirsttry">
+
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.hardware.Location.network" />
+    <uses-permission android:name="android.hardware.Location.gps" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.GradAndroidFirstTry">
+        <activity android:name=".Edit_profile"></activity>
+        <activity android:name=".Main_History" />
+        <activity android:name=".Req_upload_document_picture" />
+        <activity android:name=".Req_select_location" />
+        <activity android:name=".Patient_intro_Request" />
+        <activity android:name=".Organization_Registeration" />
+        <activity android:name=".person_registration_cont" />
+        <activity android:name=".Person_Registration" />
+        <activity android:name=".New_bottom_navigation_menu" />
+        <activity android:name=".Patient_Request" />
+        <activity android:name=".Login_page" />
+        <activity android:name=".Intro_page_3" />
+        <activity android:name=".Intro_page_2" />
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
