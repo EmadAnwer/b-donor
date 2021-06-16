@@ -5,7 +5,9 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MenuItem;
@@ -34,13 +36,14 @@ public class Login_page extends AppCompatActivity implements AsyncCallback<Backe
     EditText password_edit, email_edit;
 
     ProgressBar progressBar;
-
+    SharedPreferences pref;
     String userID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_page);
+        pref = getSharedPreferences("userData", Context.MODE_PRIVATE);
 
         // Hide ActionBar
         if (getSupportActionBar() != null) {
@@ -125,6 +128,19 @@ public class Login_page extends AppCompatActivity implements AsyncCallback<Backe
     @Override
     public void handleResponse(BackendlessUser response) {
         Toast.makeText(Login_page.this, "Logged in Successfully", Toast.LENGTH_SHORT).show();
+        SharedPreferences.Editor editor = pref.edit();
+
+        editor.putString("first_name", response.getProperty("first_name").toString());
+        editor.putString("last_name", response.getProperty("last_name").toString());
+        editor.putString("email", response.getProperty("email").toString());
+        editor.putString("address", response.getProperty("address").toString());
+        editor.putString("phone", response.getProperty("phone").toString());
+        editor.putInt("user_age", (Integer) response.getProperty("user_age"));
+        editor.putString("gender", response.getProperty("gender").toString());
+        editor.putString("blood_type", response.getProperty("blood_type").toString());
+        editor.putString("rh_type", response.getProperty("rh_type").toString());
+        editor.apply();
+
 
         startActivity(new Intent(getApplicationContext(),New_bottom_navigation_menu.class));
 

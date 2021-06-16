@@ -275,12 +275,12 @@ public class Patient_Request extends AppCompatActivity {
         patientRequest.setName("Emad");
         patientRequest.setBloodType("A");
         patientRequest.setPhone("012222222");
-        patientRequest.setRHType("negative");
+        patientRequest.setRHType("Negative");
         patientRequest.setPatientAge(30);
         patientRequest.setGender("Male");
         patientRequest.setQuantity(4);
         patientRequest.setCity("Alexandria");
-        patientRequest.setCity("Alexandria Hotel");
+        patientRequest.setHospital("Alexandria hospital");
         patientRequest.setPicture_url("https://cdn.getyourguide.com/img/location/540dc894dff37-m1409674485.jpg/92.jpg");
 
         Backendless.Data.of(PatientRequest.class).save(patientRequest, new AsyncCallback<PatientRequest>() {

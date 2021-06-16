@@ -4,6 +4,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.core.app.NotificationCompat;
@@ -11,103 +12,102 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
+
+import com.backendless.Backendless;
+import com.backendless.async.callback.AsyncCallback;
+import com.backendless.exceptions.BackendlessFault;
+import com.backendless.persistence.DataQueryBuilder;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import static androidx.core.content.ContextCompat.getSystemService;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link New_Notifications_Frag#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class New_Notifications_Frag extends Fragment {
-
+    ProgressBar progressBar3;
     Button button;
+    String bloodType,address,rh_type;
 
+
+    TextView noRequestTextView;
+    DataQueryBuilder queryBuilder;
     RecyclerView notificationRecyclerView ;
     NotificationRecyclerViewAdapter adapter;
-    List<Notification> notificationList = new ArrayList<>();
+    ArrayList<PatientRequest> notificationList = new ArrayList<>();
+    SharedPreferences pref;
 
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     public New_Notifications_Frag() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment New_Notifications_Frag.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static New_Notifications_Frag newInstance(String param1, String param2) {
-        New_Notifications_Frag fragment = new New_Notifications_Frag();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-      // return inflater.inflate(R.layout.new_fragment_notifications, container, false);
 
         // Inflate the layout for this fragment
        View v = inflater.inflate(R.layout.new_fragment_notifications, container, false);
+        pref = this.getActivity().getSharedPreferences("userData", Context.MODE_PRIVATE);
+        bloodType = pref.getString("blood_type","null");
+        address = pref.getString("address","null");
+        rh_type = pref.getString("rh_type","null");
 
+        progressBar3 = v.findViewById(R.id.progressBar3);
+        noRequestTextView = v.findViewById(R.id.noRequestTextView);
+        queryBuilder = DataQueryBuilder.create();
         //setting governorateRecyclerView
-        test();
         notificationRecyclerView = v.findViewById(R.id.notificationRecyclerView);
-        adapter = new NotificationRecyclerViewAdapter(notificationList, this);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(v.getContext(),LinearLayoutManager.VERTICAL,false);
+        notificationRecyclerView.setLayoutManager(layoutManager);
+        adapter = new NotificationRecyclerViewAdapter(notificationList,v.getContext());
         notificationRecyclerView.setAdapter(adapter);
-
+        getUserNotifications();
 
        return v;
 
 }
 
-    private void test()
+    private void getUserNotifications()
     {
-        notificationList.add(new Notification("Fatma","40ml","A+","Cairo",new Date()));
-        notificationList.add(new Notification("Ahmed","30ml","B+","Cairo",new Date()));
-        notificationList.add(new Notification("Ali","20ml","AB-","Cairo",new Date()));
-        notificationList.add(new Notification("Reem","40ml","B-","Cairo",new Date()));
-        notificationList.add(new Notification("Noura","50ml","AB+","Cairo",new Date()));
-        notificationList.add(new Notification("Salma","30ml","A-","Cairo",new Date()));
-        notificationList.add(new Notification("Sara","20ml","O-","Cairo",new Date()));
-        notificationList.add(new Notification("Khalid","20ml","O+","Cairo",new Date()));
+
+        queryBuilder.setWhereClause("bloodType = '"+bloodType+"' and accepted = False  and city= '"+address+"' and RHType = '"+rh_type+"'");
+        Log.i("asd", "bloodType = '"+bloodType+"' and accepted = False  and city= '"+address+"' and RHType = '"+rh_type+"'");
+
+        Backendless.Data.of(PatientRequest.class).find(queryBuilder,new AsyncCallback<List<PatientRequest>>() {
+            @Override
+            public void handleResponse(List<PatientRequest> response) {
+                progressBar3.setVisibility(View.GONE);
+                notificationList.addAll(response);
+                if(notificationList.size() == 0)
+                    noRequestTextView.setVisibility(View.VISIBLE);
+                adapter.notifyDataSetChanged();
+
+
+            }
+
+            @Override
+            public void handleFault(BackendlessFault fault) {
+
+            }
+        });
 
     }
 }

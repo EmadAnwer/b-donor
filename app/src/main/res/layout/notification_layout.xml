@@ -7,7 +7,7 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/patientNameTextView"
+        android:id="@+id/nPatientNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -18,35 +18,35 @@
         app:layout_constraintTop_toTopOf="@+id/imageView2" />
 
     <TextView
-        android:id="@+id/timeTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
+        android:id="@+id/nTimeTextView"
+        android:layout_width="37dp"
+        android:layout_height="19dp"
         android:text="Time"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/guideline3"
-        app:layout_constraintTop_toBottomOf="@+id/locationTextView" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/nLocationTextView"
+        app:layout_constraintTop_toBottomOf="@+id/nBloodGroupTextView" />
 
     <TextView
-        android:id="@+id/quantityTextView"
+        android:id="@+id/nQuantityTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="Quantity"
         android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/patientNameTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/nPatientNameTextView" />
 
     <TextView
-        android:id="@+id/bloodGroupTextView"
+        android:id="@+id/nBloodGroupTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="1dp"
         android:text="Blood Group"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/quantityTextView"
-        app:layout_constraintTop_toBottomOf="@+id/quantityTextView" />
+        app:layout_constraintStart_toStartOf="@+id/nQuantityTextView"
+        app:layout_constraintTop_toBottomOf="@+id/nQuantityTextView" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -78,32 +78,32 @@
         app:layout_constraintGuide_percent=".10" />
 
     <TextView
-        android:id="@+id/locationTextView"
+        android:id="@+id/nLocationTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Location"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/bloodGroupTextView"
-        app:layout_constraintTop_toBottomOf="@+id/bloodGroupTextView" />
+        app:layout_constraintStart_toStartOf="@+id/nBloodGroupTextView"
+        app:layout_constraintTop_toBottomOf="@+id/nBloodGroupTextView" />
 
     <ImageView
         android:id="@+id/acceptImageView"
         android:layout_width="77dp"
         android:layout_height="46dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="12dp"
-        app:layout_constraintStart_toEndOf="@+id/bloodGroupTextView"
-        app:layout_constraintTop_toBottomOf="@+id/patientNameTextView"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toEndOf="@+id/nBloodGroupTextView"
+        app:layout_constraintTop_toBottomOf="@+id/nPatientNameTextView"
         app:srcCompat="@drawable/accept" />
 
     <ImageView
-        android:id="@+id/rejectImageView"
+        android:id="@+id/nRejectImageView"
         android:layout_width="77dp"
         android:layout_height="46dp"
         android:layout_marginStart="120dp"
-        android:layout_marginTop="12dp"
-        app:layout_constraintStart_toEndOf="@+id/bloodGroupTextView"
-        app:layout_constraintTop_toBottomOf="@+id/patientNameTextView"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toEndOf="@+id/nBloodGroupTextView"
+        app:layout_constraintTop_toBottomOf="@+id/nPatientNameTextView"
         app:srcCompat="@drawable/reject" />
 
 

@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Date;
 
 public class PatientRequest {
+    private Boolean accepted;
     private String picture_url;
     private Integer patientAge;
     private String gender;
@@ -30,6 +31,14 @@ public class PatientRequest {
     public PatientRequest() {
     }
 
+    public Boolean getAccepted()
+    {
+        return accepted;
+    }
+    public void setAccepted( Boolean accepted )
+    {
+        this.accepted = accepted;
+    }
     public void setPicture_url(String picture_url )
     {
         this.picture_url = picture_url;
