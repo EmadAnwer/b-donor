@@ -101,6 +101,21 @@ public class Person_Registration extends AppCompatActivity implements AsyncCallb
 
         address_spinner = findViewById(R.id.address_spinner);
 
+        //address_spinner
+        //get the spinner from the xml.
+        Spinner address_spinner = findViewById(R.id.address_spinner);
+
+        //create a list of items for the spinner.
+        String[] address_items = new String[]{ "Select your City", "Mokkattam", "Masr El-Gededa", "Rehab",
+                "Fifth settlement ", "Madinet Nasr", "Madinity","Elshrouk", "El-Obour",
+                "Maaadi", "Masr El-Adema","West El-Balad", "Sheraton", "Shobra", "Gesr El-Swis", "Elnozha", "El-Zamalk" };
+
+        //create an adapter to describe how the items are displayed, adapters are used in several places in android.
+        //There are multiple variations of this, but this is the basic variant.
+        ArrayAdapter<String> address_adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, address_items);
+        //set the spinners adapter to the previously created one.
+        address_spinner.setAdapter(address_adapter);
+
 
     }
 
@@ -118,6 +133,8 @@ public class Person_Registration extends AppCompatActivity implements AsyncCallb
         String gender = "";
         String blood_type = "";
         String rh_type = "";
+
+        String address = address_spinner.getSelectedItem().toString();
 
         if (radio_male_btn.isChecked()) {
             gender = "Male";
@@ -208,6 +225,7 @@ public class Person_Registration extends AppCompatActivity implements AsyncCallb
         user.setProperty("gender",gender);
         user.setProperty("blood_type",blood_type);
         user.setProperty("rh_type",rh_type);
+        user.setProperty("address", address);
 
 
         Toast.makeText(this, "Create user!", Toast.LENGTH_SHORT).show();
