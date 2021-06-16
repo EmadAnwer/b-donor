@@ -15,12 +15,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
+
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,10 +24,7 @@ public class Edit_profile extends AppCompatActivity {
 
     public static final String TAG = "TAG";
 
-    FirebaseAuth fAuth;
-    FirebaseFirestore fStore;
-    FirebaseUser user;
-    StorageReference storageReference;
+
 
     EditText edit_name_profile, edit_username_profile, edit_email_profile, edit_phone_profile;
     Button done;
@@ -56,10 +48,6 @@ public class Edit_profile extends AppCompatActivity {
         String blood_type_profile= data.getStringExtra("blood_type_profile");
 
 
-        fAuth = FirebaseAuth.getInstance();
-        fStore = FirebaseFirestore.getInstance();
-        user = fAuth.getCurrentUser();
-        storageReference = FirebaseStorage.getInstance().getReference();
 
         edit_name_profile = findViewById(R.id.edit_name_profile);
         edit_username_profile = findViewById(R.id.edit_username_profile);
@@ -77,32 +65,7 @@ public class Edit_profile extends AppCompatActivity {
                 }
 
                 final String email = edit_email_profile.getText().toString();
-                user.updateEmail(email).addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        DocumentReference docRef = fStore.collection("users").document(user.getUid());
-                        Map<String,Object> edited = new HashMap<>();
-                        edited.put("email",email);
-                        edited.put("fName",edit_name_profile.getText().toString());
-                        edited.put("phone",edit_phone_profile.getText().toString());
-                        edited.put("username",edit_username_profile.getText().toString());
 
-                        docRef.update(edited).addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void aVoid) {
-                                Toast.makeText(Edit_profile.this, "Profile Updated", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                                finish();
-                            }
-                        });
-                        Toast.makeText(Edit_profile.this, "Email is changed.", Toast.LENGTH_SHORT).show();
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(Edit_profile.this,   e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
 
 
             }

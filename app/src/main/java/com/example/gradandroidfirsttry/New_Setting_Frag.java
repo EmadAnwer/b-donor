@@ -18,8 +18,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.FirebaseFirestore;
+
 
 
 /**
@@ -29,8 +28,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
  */
 public class New_Setting_Frag extends Fragment {
 
-    FirebaseAuth fAuth;
-    FirebaseFirestore fStore;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -82,8 +80,7 @@ public class New_Setting_Frag extends Fragment {
         View v = inflater.inflate(R.layout.new_fragment_setting, container, false);
         v.setBackgroundColor(Color.WHITE);
 
-        fAuth = FirebaseAuth.getInstance();
-        fStore = FirebaseFirestore.getInstance();
+
 
 
        Button logout = (Button) v.findViewById(R.id.logout_btn);
@@ -95,7 +92,6 @@ public class New_Setting_Frag extends Fragment {
 //                startActivity(intent);
 //                intent = null;
 
-                FirebaseAuth.getInstance().signOut();//logout
                 startActivity(new Intent(getActivity(),Login_page.class));
 //                finish();
 

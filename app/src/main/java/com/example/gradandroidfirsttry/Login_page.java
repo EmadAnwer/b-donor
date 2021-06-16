@@ -25,9 +25,7 @@ import com.backendless.async.callback.AsyncCallback;
 import com.backendless.exceptions.BackendlessFault;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.FirebaseFirestore;
+
 
 public class Login_page extends AppCompatActivity implements AsyncCallback<BackendlessUser> {
 
@@ -37,8 +35,6 @@ public class Login_page extends AppCompatActivity implements AsyncCallback<Backe
 
     ProgressBar progressBar;
 
-    FirebaseAuth fAuth;
-    FirebaseFirestore fStore;
     String userID;
 
     @Override
@@ -52,8 +48,6 @@ public class Login_page extends AppCompatActivity implements AsyncCallback<Backe
         }
 
 
-        fAuth = FirebaseAuth.getInstance();
-        fStore = FirebaseFirestore.getInstance();
         progressBar = findViewById(R.id.progressBar);
 
         password_edit = findViewById(R.id.password_edit);
@@ -131,7 +125,9 @@ public class Login_page extends AppCompatActivity implements AsyncCallback<Backe
     @Override
     public void handleResponse(BackendlessUser response) {
         Toast.makeText(Login_page.this, "Logged in Successfully", Toast.LENGTH_SHORT).show();
+
         startActivity(new Intent(getApplicationContext(),New_bottom_navigation_menu.class));
+
     }
 
     @Override

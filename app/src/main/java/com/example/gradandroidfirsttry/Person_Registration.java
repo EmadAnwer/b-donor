@@ -29,25 +29,16 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.auth.User;
+
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class Person_Registration extends AppCompatActivity implements AsyncCallback<BackendlessUser> {
-    FirebaseAuth fAuth;
-    FirebaseFirestore fStore;
+
     String userID;
 
-    private FirebaseDatabase database;
-    private DatabaseReference mDatabase;
+
 
     private static final String USERS = "users";
 //    private String TAG = "RegisterActivity";
@@ -55,7 +46,6 @@ public class Person_Registration extends AppCompatActivity implements AsyncCallb
     private String fname, lname, email, phone, username, age,
             bloodType, rhType, gender, address;
     private String password;
-    private User user;
 
 
     public static final String TAG = "TAG";

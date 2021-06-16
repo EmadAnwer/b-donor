@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "1029650184323",
-    "project_id": "graduation-project--b-donor",
-    "storage_bucket": "graduation-project--b-donor.appspot.com"
+    "project_number": "21682134252",
+    "project_id": "bdonor-59636",
+    "storage_bucket": "bdonor-59636.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1029650184323:android:45544a87351306f88903b6",
+        "mobilesdk_app_id": "1:21682134252:android:6e54645819334af2ed59c9",
         "android_client_info": {
           "package_name": "com.example.gradandroidfirsttry"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1029650184323-hk2atq9rfkohj83g9mhnvsugcpngo1l2.apps.googleusercontent.com",
+          "client_id": "21682134252-6e81f7mr8mbuho6ob35puorq3m7dgps7.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAvdcLiKDKcz0Ct3497e8PxrQkM8Ob0IZI"
+          "current_key": "AIzaSyCJe9YtSqJqB-xevuRI-6xhvqHxOBVUmlU"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1029650184323-hk2atq9rfkohj83g9mhnvsugcpngo1l2.apps.googleusercontent.com",
+              "client_id": "21682134252-6e81f7mr8mbuho6ob35puorq3m7dgps7.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

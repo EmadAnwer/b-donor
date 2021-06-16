@@ -14,10 +14,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
+
 
 import com.google.android.material.bottomnavigation.BottomNavigationMenu;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -26,7 +23,6 @@ import org.jetbrains.annotations.NotNull;
 
 public class New_bottom_navigation_menu extends AppCompatActivity {
 
-    FirebaseAuth fAuth;
 
     public New_bottom_navigation_menu() {
 
@@ -44,7 +40,8 @@ public class New_bottom_navigation_menu extends AppCompatActivity {
 
         BottomNavigationView bottomNav = findViewById(R.id.new_nav_view);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
-
+        getSupportFragmentManager().beginTransaction().replace(R.id.new_fragment_container,
+               new New_Home_Frag()).commit();
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =

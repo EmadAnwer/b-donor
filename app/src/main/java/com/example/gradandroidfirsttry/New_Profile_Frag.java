@@ -14,22 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -43,10 +28,7 @@ import java.util.concurrent.Executor;
 
 public class New_Profile_Frag extends Fragment {
 
-    FirebaseAuth fAuth;
-    FirebaseFirestore fStore;
-    FirebaseUser user;
-    StorageReference storageReference;
+
 
     String userId;
 
@@ -57,8 +39,7 @@ public class New_Profile_Frag extends Fragment {
 
     private final String TAG = this.getClass().getName().toUpperCase();
 
-    private FirebaseDatabase database;
-    private DatabaseReference mDatabase;
+
     private Map<String, String> userMap;
     private String email;
     private String userid;
@@ -93,13 +74,6 @@ public class New_Profile_Frag extends Fragment {
         rh_type_profile = v.findViewById(R.id.rh_type_profile);
 
 
-        fAuth = FirebaseAuth.getInstance();
-        fStore = FirebaseFirestore.getInstance();
-        storageReference = FirebaseStorage.getInstance().getReference();
-
-        userId = fAuth.getCurrentUser().getUid();
-        user = fAuth.getCurrentUser();
-
 
         // Read from the database
 //        userRef.addValueEventListener(new ValueEventListener() {
@@ -132,25 +106,7 @@ public class New_Profile_Frag extends Fragment {
 //        });
 
 
-        DocumentReference documentReference = fStore.collection("users").document(userId);
-        documentReference.addSnapshotListener((Executor) this, new EventListener<DocumentSnapshot>() {
-            @Override
-            public void onEvent(@javax.annotation.Nullable DocumentSnapshot documentSnapshot,
-                                @javax.annotation.Nullable FirebaseFirestoreException e) {
-                if(documentSnapshot.exists()){
-                    phoneNo_profile.setText(documentSnapshot.getString("phone"));
-                    profileName.setText(documentSnapshot.getString("fName"));
-                    email_profile.setText(documentSnapshot.getString("email"));
-                    username_profile.setText(documentSnapshot.getString("username"));
-                    blood_type_profile.setText(documentSnapshot.getString("bloodType"));
-                    rh_type_profile.setText(documentSnapshot.getString("rhType"));
 
-
-                }else {
-                    Log.d("tag", "onEvent: Document do not exists");
-                }
-            }
-        });
 
 
 
