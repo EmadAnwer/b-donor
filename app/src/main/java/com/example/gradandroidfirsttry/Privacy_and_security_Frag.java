@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -72,15 +73,33 @@ public class Privacy_and_security_Frag extends Fragment {
 
         ImageView back_from_privacy = (ImageView) v.findViewById(R.id.back_from_privacy);
         back_from_privacy.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(getActivity(),New_Setting_Frag.class);
-                startActivity(intent);
-                intent = null;
+                FragmentTransaction fragmentTransaction=getFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.navigate_to_privacy, new New_Setting_Frag());
+                fragmentTransaction.addToBackStack(null);
+                Toast.makeText(getActivity(), "Back to Setting" , Toast.LENGTH_LONG).show();
+                fragmentTransaction.commit();
+
+            }
+
+        });
+
+        Button change_password = (Button) v.findViewById(R.id.change_password);
+        change_password.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                FragmentTransaction fragmentTransaction=getFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.navigate_to_privacy, new Change_password_Frag());
+                fragmentTransaction.addToBackStack(null);
+                Toast.makeText(getActivity(), "Change Password" , Toast.LENGTH_LONG).show();
+                fragmentTransaction.commit();
 
                 //make your toast here
-                Toast.makeText(getContext(),"Back to Setting",Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(),"Go to update password",Toast.LENGTH_LONG).show();
             }
         });
 

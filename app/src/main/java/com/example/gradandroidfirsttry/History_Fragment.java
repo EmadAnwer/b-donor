@@ -56,12 +56,14 @@ public class History_Fragment extends Fragment {
 
     void test()
     {
-        historyList.add(new History("Emad","A","done",new Date()));
-        historyList.add(new History("Ali","B","done",new Date()));
-        historyList.add(new History("Ahmed","O","done",new Date()));
-        historyList.add(new History("Alaa","A","done",new Date()));
-        historyList.add(new History("Alia","B","done",new Date()));
-        historyList.add(new History("Hoda","O","done",new Date()));
+        historyList.add(new History("Emad","A-","done",new Date()));
+        historyList.add(new History("Ali","B+","done",new Date()));
+        historyList.add(new History("Ahmed","O+","done",new Date()));
+        historyList.add(new History("Alaa","A+","done",new Date()));
+        historyList.add(new History("Alia","B-","done",new Date()));
+        historyList.add(new History("Hoda","O+","done",new Date()));
+        historyList.add(new History("Hana","AB+-","done",new Date()));
+        historyList.add(new History("Nora","AB-","done",new Date()));
 
 
     }

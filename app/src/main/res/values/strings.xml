@@ -1,9 +1,14 @@
 <resources>
-    <string name="app_name">Grad android first try</string>
+    <string name="app_name">Graduation project: Group1 "B-Donor"</string>
     <string name="title_activity_bottom_navigation">MainActivity</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="notification_activity">NotificationView</string>
+
+    <string name="order_placed">order_placed</string>
+
 </resources>

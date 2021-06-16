@@ -17,6 +17,15 @@
     <color name="Gray">#A9A7A7</color>
     <color name="green">#168730</color>
 
+    <color name="colorPrimaryDarkTrackReq">#FF0097A7</color>
+    <color name="colorPrimaryTrackReq">#0288D1</color>
+    <color name="colorAccentTrackReq">#03DAC5</color>
+    <color name="colorTextTrackReq">#000111</color>
+    <color name="colorWhiteTrackReq">#FFFFFF</color>
+
+
+
+
 
 
 </resources>

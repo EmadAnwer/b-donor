@@ -32,44 +32,46 @@
 
     </LinearLayout>
 
+
     <TextView
-        android:id="@+id/set_location_please"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="20dp"
-        android:text="Please Enter you location"
-        android:textColor="#A70B0B"
-        android:textSize="30dp" />
+        android:text="Please Select your Location City"
+        android:textColor="@color/main_red"
+        android:textSize="20dp"/>
 
     <Spinner
-        android:id="@+id/set_location_spinner1"
+        android:id="@+id/set_req_city"
         android:layout_width="300dp"
         android:layout_height="60dp"
-        android:background="@android:drawable/btn_dropdown"
-        android:layout_marginTop="20dp"
-        />
-
-    <FrameLayout
-        android:id="@+id/google_map"
-        android:layout_width="match_parent"
-        android:layout_height="63dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginHorizontal="10dp">
+        android:layout_marginTop="20dp" />
 
 
-    </FrameLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:layout_marginLeft="10dp"
+        android:text="Please Select your Location Hospital"
+        android:textColor="@color/main_red"
+        android:textSize="20dp"/>
 
+
+    <Spinner
+        android:id="@+id/set_req_hospital"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="30dp" />
 
     <Button
         android:id="@+id/next_2_req"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Next"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="50dp"
         android:layout_marginLeft="300dp"/>
-
-
 
 
 </LinearLayout>

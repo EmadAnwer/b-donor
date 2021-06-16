@@ -77,13 +77,14 @@ public class Rating_Frag extends Fragment {
 
                 FragmentTransaction fragmentTransaction=getFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.navigate_to_Rating, new New_Setting_Frag());
-                fragmentTransaction.addToBackStack(null);
-                Toast.makeText(getActivity(), "Done Rating" , Toast.LENGTH_LONG).show();
                 fragmentTransaction.commit();
+
+                Toast.makeText(getActivity(), "Done Rating" , Toast.LENGTH_LONG).show();
 
             }
 
         });
+        
 
         ImageView back_from_rating = (ImageView) v.findViewById(R.id.back_from_rating);
         back_from_rating.setOnClickListener(new View.OnClickListener() {
@@ -94,8 +95,9 @@ public class Rating_Frag extends Fragment {
                 FragmentTransaction fragmentTransaction=getFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.navigate_to_Rating, new New_Setting_Frag());
                 fragmentTransaction.addToBackStack(null);
-                Toast.makeText(getActivity(), "Back to Setting" , Toast.LENGTH_LONG).show();
                 fragmentTransaction.commit();
+
+                Toast.makeText(getActivity(), "Back to Setting" , Toast.LENGTH_LONG).show();
 
             }
 

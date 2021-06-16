@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="ExtraText"
+    android:background="#95B3C3"
+    android:paddingLeft="1dp"
+    android:scrollbarAlwaysDrawHorizontalTrack="true"
+    android:textAlignment="center"
+    tools:context=".popup">
+
+
+
+    <Button
+        android:id="@+id/close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="-1dp"
+        android:backgroundTint="#EC1414"
+        android:text="X"
+        android:textColor="#E3DDDD"
+        android:textSize="24sp" />
+
+    <LinearLayout
+        android:layout_width="427dp"
+        android:layout_height="479dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="-18dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="217dp"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/termsTitle"
+            android:layout_width="178dp"
+            android:layout_height="27dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="70dp"
+            android:layout_marginEnd="198dp"
+            android:layout_marginBottom="20dp"
+            android:text="Our Terms &amp; Policies are :"
+            android:textAlignment="gravity"
+            android:textColor="#E62020"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:id="@+id/terms1"
+            android:layout_width="297dp"
+            android:layout_height="46dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="96dp"
+            android:layout_marginBottom="20dp"
+            android:background="#C8B9B9"
+            android:shadowColor="#D11B1B"
+            android:text="1-The Donor's age must Be Between 18 &amp; 65 "
+            android:textColor="#5E4F4F"
+            android:textColorHighlight="#AF3C3C"
+            android:textColorLink="#914343" />
+
+
+        <TextView
+            android:id="@+id/terms2"
+            android:layout_width="297dp"
+            android:layout_height="46dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="31dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="94dp"
+            android:layout_marginBottom="10dp"
+            android:background="#FFC8B9B9"
+            android:text="2-Location Must Be accessed" />
+
+        <TextView
+            android:id="@+id/terms3"
+            android:layout_width="297dp"
+            android:layout_height="70dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="31dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="95dp"
+            android:layout_marginBottom="10dp"
+            android:background="#FFC8B9B9"
+            android:text="3-Diseases must not be from the Following : Malaria , Hereditary blood diseases , Diabetics, Sever Anemia , Cancer , Blood Pressure , Heart Diseases" />
+
+        <TextView
+            android:id="@+id/terms4"
+            android:layout_width="297dp"
+            android:layout_height="50dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="96dp"
+            android:background="#FFC8B9B9"
+            android:text="4-Between every donation process must be 56 Days " />
+    </LinearLayout>
+
+
+
+</RelativeLayout>

@@ -47,7 +47,7 @@
 
 
     <EditText
-        android:id="@+id/Name"
+        android:id="@+id/edit_name_profile"
         android:layout_width="409dp"
         android:layout_height="51dp"
         android:ems="10"
@@ -61,7 +61,7 @@
         app:layout_constraintVertical_bias="0.211" />
 
     <EditText
-        android:id="@+id/Username"
+        android:id="@+id/edit_username_profile"
         android:layout_width="408dp"
         android:layout_height="51dp"
         android:ems="10"
@@ -74,7 +74,7 @@
         app:layout_constraintVertical_bias="0.286" />
 
     <EditText
-        android:id="@+id/Email"
+        android:id="@+id/edit_Email_profile"
         android:layout_width="412dp"
         android:layout_height="53dp"
         android:ems="10"
@@ -87,7 +87,7 @@
         app:layout_constraintVertical_bias="0.362" />
 
     <EditText
-        android:id="@+id/Contact"
+        android:id="@+id/edit_phone_profile"
         android:layout_width="413dp"
         android:layout_height="54dp"
         android:ems="10"
@@ -116,10 +116,9 @@
 
 
     <LinearLayout
-        android:layout_width="404dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginVertical="10dp"
-        android:layout_marginLeft="5dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -142,7 +141,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="42dp"
                 android:layout_marginHorizontal="5dp"
-                android:layout_marginLeft="10dp"
+
                 android:text="Aids"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -155,7 +154,6 @@
                 android:id="@+id/Malaria"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="5dp"
                 android:text="Malaria"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -168,7 +166,6 @@
                 android:id="@+id/hepatitis"
                 android:layout_width="89dp"
                 android:layout_height="36dp"
-                android:layout_marginHorizontal="5dp"
                 android:text="Hepatitis"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -181,7 +178,6 @@
                 android:id="@+id/Cancer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="5dp"
                 android:text="Cancer"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -189,6 +185,14 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.655" />
+            <CheckBox
+                android:id="@+id/Diabetics"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Diabetics"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="254dp"
+                tools:layout_editor_absoluteY="408dp" />
 
         </LinearLayout>
 
@@ -205,7 +209,7 @@
                 android:id="@+id/hereditary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="5dp"
+                android:layout_marginLeft="5dp"
                 android:text="Hereditary blood diseases"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -214,25 +218,27 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.602" />
 
-            <CheckBox
-                android:id="@+id/Diabetics"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Diabetics"
-                tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteX="254dp"
-                tools:layout_editor_absoluteY="408dp" />
 
             <CheckBox
                 android:id="@+id/Syphilis"
-                android:layout_width="100dp"
+                android:layout_width="wrap_content"
                 android:layout_height="46dp"
-                android:layout_marginHorizontal="5dp"
                 android:text="Syphilis"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.495"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+            <CheckBox
+                android:id="@+id/heart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="heart diseases"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.885"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.655" />
 
 
         </LinearLayout>
@@ -250,38 +256,27 @@
                 android:id="@+id/Severe"
                 android:layout_width="wrap_content"
                 android:layout_height="39dp"
-                android:layout_marginHorizontal="5dp"
-                android:layout_marginLeft="10dp"
-                android:text="Severe Anemia"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.052"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.66" />
+                android:layout_marginLeft="5dp"
+                android:text="Severe Anemia" />
 
             <CheckBox
-                android:id="@+id/heart"
+                android:id="@+id/Beta_thalassemia"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="heart diseases"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.885"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.655" />
+                android:layout_height="39dp"
+                android:text="Beta_thalassemia" />
+
 
             <CheckBox
                 android:id="@+id/other"
+                android:layout_width="wrap_content"
+                android:layout_height="39dp"
+                android:text="other" />
+
+            <CheckBox
+                android:id="@+id/no_disease"
                 android:layout_width="100dp"
                 android:layout_height="39dp"
-                android:text="other"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.716"
-                tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteX="17dp" />
+                android:text="none" />
 
 
         </LinearLayout>
@@ -324,7 +319,7 @@
         app:srcCompat="@drawable/heartbeats" />
 
     <Button
-        android:id="@+id/Done"
+        android:id="@+id/Done_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/main_red"

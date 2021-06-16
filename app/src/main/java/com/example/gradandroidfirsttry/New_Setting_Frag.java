@@ -18,6 +18,8 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 
 /**
@@ -26,6 +28,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
  * create an instance of this fragment.
  */
 public class New_Setting_Frag extends Fragment {
+
+    FirebaseAuth fAuth;
+    FirebaseFirestore fStore;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -77,19 +82,33 @@ public class New_Setting_Frag extends Fragment {
         View v = inflater.inflate(R.layout.new_fragment_setting, container, false);
         v.setBackgroundColor(Color.WHITE);
 
+        fAuth = FirebaseAuth.getInstance();
+        fStore = FirebaseFirestore.getInstance();
+
+
        Button logout = (Button) v.findViewById(R.id.logout_btn);
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(getActivity(),Login_page.class);
-                startActivity(intent);
-                intent = null;
+//                Intent intent = new Intent(getActivity(),Login_page.class);
+//                startActivity(intent);
+//                intent = null;
+
+                FirebaseAuth.getInstance().signOut();//logout
+                startActivity(new Intent(getActivity(),Login_page.class));
+//                finish();
 
                 //make your toast here
                 Toast.makeText(getContext(),"Logout",Toast.LENGTH_LONG).show();
             }
         });
+
+//        public void logout(View view) {
+//            FirebaseAuth.getInstance().signOut();//logout
+//            startActivity(new Intent(getApplicationContext(),Login.class));
+//            finish();
+//        }
 
         Button rating_btn = (Button) v.findViewById(R.id.rating_btn);
         rating_btn.setOnClickListener(new View.OnClickListener() {
@@ -124,6 +143,42 @@ public class New_Setting_Frag extends Fragment {
             }
 
         });
+
+
+        Button about_btn = (Button) v.findViewById(R.id.about_btn);
+        about_btn.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                FragmentTransaction fragmentTransaction=getFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.setting_page_frg, new About_Frag());
+                fragmentTransaction.addToBackStack(null);
+                Toast.makeText(getActivity(), "About Fragment" , Toast.LENGTH_LONG).show();
+                fragmentTransaction.commit();
+
+
+            }
+
+        });
+
+        Button help_and_support_btn = (Button) v.findViewById(R.id.help_support_btn);
+        help_and_support_btn.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                FragmentTransaction fragmentTransaction=getFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.setting_page_frg, new Help_and_Support_Frag());
+                fragmentTransaction.addToBackStack(null);
+                Toast.makeText(getActivity(), "Help and Support Fragment" , Toast.LENGTH_LONG).show();
+                fragmentTransaction.commit();
+
+
+            }
+
+        });
+
 
         return v;
 

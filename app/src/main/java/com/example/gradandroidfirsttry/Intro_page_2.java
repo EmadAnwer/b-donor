@@ -31,6 +31,19 @@ public class Intro_page_2 extends AppCompatActivity {
             getSupportActionBar().hide();
         }
 
+        ImageView back_from_register_login = findViewById(R.id.back_from_register_login);
+        back_from_register_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(Intro_page_2.this,MainActivity.class);
+                startActivity(intent);
+
+                Toast.makeText(getApplicationContext(), "Back From Intro 2",Toast.LENGTH_LONG).show();
+
+            }
+        });
+
         // 1st button
         ImageView signup = findViewById(R.id.registeration_btn);
         signup.setOnClickListener(new View.OnClickListener() {

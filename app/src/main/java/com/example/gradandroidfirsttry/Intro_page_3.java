@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 
@@ -19,16 +20,24 @@ public class Intro_page_3 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.intro_page_3);
 
-       /* // calling the action bar
-        ActionBar actionBar = getSupportActionBar();
-
-        // showing the back button in action bar
-        actionBar.setDisplayHomeAsUpEnabled(true); */
 
         // Hide ActionBar
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
+
+        ImageView back_from_person_org = findViewById(R.id.back_from_person_org);
+        back_from_person_org.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(Intro_page_3.this,Intro_page_2.class);
+                startActivity(intent);
+
+                Toast.makeText(getApplicationContext(), "Back From Intro 3",Toast.LENGTH_LONG).show();
+
+            }
+        });
 
         Button sign_as_person = findViewById(R.id.sign_person);
         sign_as_person.setOnClickListener(new View.OnClickListener() {

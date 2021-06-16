@@ -42,7 +42,7 @@
         android:padding="5dp"
         android:backgroundTint="@color/white"
         android:textColor="@color/black"
-        android:text="Please upload your official document picture" />
+        android:text="Please click here to upload your official document picture" />
 
     <ImageView
         android:id="@+id/upload_document_pic"

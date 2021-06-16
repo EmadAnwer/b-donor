@@ -23,6 +23,10 @@ public class Main_History extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_history);
+        // Hide ActionBar
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
 
         //setting historyRecyclerView
         history_recyclerView2 = findViewById(R.id.history_recyclerView2);
@@ -44,6 +48,8 @@ public class Main_History extends AppCompatActivity {
         historyList.add(new History("Alaa","A","done",new Date()));
         historyList.add(new History("Alia","B","done",new Date()));
         historyList.add(new History("Hoda","O","done",new Date()));
+        historyList.add(new History("Hana","AB+-","done",new Date()));
+        historyList.add(new History("Nora","AB-","done",new Date()));
 
 
     }

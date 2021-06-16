@@ -20,7 +20,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GradAndroidFirstTry">
-        <activity android:name=".Edit_profile"></activity>
+        <activity android:name=".popup"></activity>
+        <activity android:name=".Track_request_items" />
+        <activity android:name=".Main_Track_Request" />
+        <activity android:name=".Trouble_login_phone_no" />
+        <activity android:name=".Trouble_login_username_email" />
+        <activity android:name=".Edit_profile" />
         <activity android:name=".Main_History" />
         <activity android:name=".Req_upload_document_picture" />
         <activity android:name=".Req_select_location" />

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Help_and_Support_Frag"
+    android:id="@+id/help_support_frag">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/back_from_help_support"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="15dp"
+                android:forceHasOverlappingRendering="true"
+                android:src="@drawable/left_arrow" />
+
+            <Button
+                android:layout_width="370dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:text="Help and Support"
+                android:textAlignment="textStart"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/q1"
+            android:layout_width="380dp"
+            android:layout_height="67dp"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="#FFD8D7D7"
+            android:enabled="true"
+            android:text="How can i request for a blood if i was signed up as a donor?"
+            android:textAlignment="viewStart"
+            android:textColor="#090909">
+
+        </Button>
+
+
+        <Button
+            android:id="@+id/terms"
+            android:layout_width="380dp"
+            android:layout_height="67dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:backgroundTint="#FFD8D7D7"
+            android:checkable="true"
+            android:clickable="true"
+            android:enabled="true"
+            android:text="Terms &amp; Policies"
+            android:textAlignment="viewStart"
+            android:textColor="#090909" />
+
+        <Button
+            android:id="@+id/q2"
+            android:layout_width="380dp"
+            android:layout_height="67dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:backgroundTint="#FFD8D7D7"
+            android:enabled="true"
+            android:text="how can i track my request ?"
+            android:textAlignment="viewStart"
+            android:textColor="#090909" />
+
+        <Button
+            android:id="@+id/q3"
+            android:layout_width="380dp"
+            android:layout_height="67dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:backgroundTint="#FFD8D7D7"
+            android:enabled="true"
+            android:text="how can i see my history ?"
+            android:textAlignment="viewStart"
+            android:textColor="#090909" />
+
+        <Button
+            android:id="@+id/q4"
+            android:layout_width="380dp"
+            android:layout_height="67dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:backgroundTint="#FFD8D7D7"
+            android:checkable="true"
+            android:clickable="true"
+            android:enabled="true"
+            android:text="how can i change my password ?"
+            android:textAlignment="viewStart"
+            android:textColor="#090909" />
+
+        <Button
+            android:id="@+id/q5"
+            android:layout_width="380dp"
+            android:layout_height="67dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:backgroundTint="#FFD8D7D7"
+            android:checkable="true"
+            android:clickable="true"
+            android:enabled="true"
+            android:text="how can i edit my profile ?"
+            android:textAlignment="viewStart"
+            android:textColor="#090909" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+        <Button
+            android:id="@+id/bdonormail"
+            android:layout_width="220dp"
+            android:layout_height="67dp"
+            android:backgroundTint="#FFD8D7D7"
+            android:enabled="false"
+            android:text="For Other Complains: "
+            android:textAlignment="viewStart"
+            android:textColor="#090909" />
+
+            <TextView
+                android:id="@+id/bdonorgmail"
+                android:layout_width="160dp"
+                android:layout_height="43dp"
+                android:layout_marginLeft="8dp"
+                android:backgroundTint="#FFD8D7D7"
+                android:selectAllOnFocus="true"
+                android:shadowColor="#E45353"
+                android:text="B-Donor@gmail.com"
+                android:textColor="#090909"
+                android:textIsSelectable="true"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+</FrameLayout>

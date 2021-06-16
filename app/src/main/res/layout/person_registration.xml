@@ -1,34 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-tools:context=".Person_Registration"
-android:orientation="vertical"
-    android:background="@drawable/registeration_person">
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Person_Registration" >
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/registration">
 
 
 <LinearLayout
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:layout_marginTop="90dp"
+    android:layout_marginTop="115dp"
     android:layout_marginLeft="10dp">
     <TextView
         android:layout_width = "wrap_content"
         android:layout_height = "wrap_content"
         android:text = "First Name"
-        android:textSize = "15dp"
+        android:textSize = "15dp" />
 
-        />
+    <TextView
+        android:layout_width = "wrap_content"
+        android:layout_height = "wrap_content"
+        android:text = "*"
+        android:textSize = "25sp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+        android:textColor="@color/main_red"/>
+
     <EditText
+        android:id="@+id/first_name_edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Enter first Name"
-        android:textColorHint="@color/light_gray"
         android:layout_marginLeft="110dp"
-        android:inputType="text"/>
+        android:hint="Enter first Name"
+        android:inputType="text"
+        android:text="emad"
+        android:textColorHint="@color/light_gray" />
 
 </LinearLayout>
 
@@ -41,15 +58,26 @@ android:orientation="vertical"
         android:layout_width = "wrap_content"
         android:layout_height = "wrap_content"
         android:text = "Last Name"
-        android:textSize = "15dp"
-        />
+        android:textSize = "15dp" />
+
+    <TextView
+        android:layout_width = "wrap_content"
+        android:layout_height = "wrap_content"
+        android:text = "*"
+        android:textSize = "25sp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+        android:textColor="@color/main_red"/>
+
     <EditText
+        android:id="@+id/last_name_edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Enter Last Name"
-        android:textColorHint="@color/light_gray"
         android:layout_marginLeft="112dp"
-        android:inputType="text"/>
+        android:hint="Enter Last Name"
+        android:inputType="text"
+        android:text="emad"
+        android:textColorHint="@color/light_gray" />
 
 </LinearLayout>
 
@@ -62,15 +90,26 @@ android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Phone Number"
-        android:textSize = "15dp"
-        />
+        android:textSize = "15dp" />
+
+    <TextView
+        android:layout_width = "wrap_content"
+        android:layout_height = "wrap_content"
+        android:text = "*"
+        android:textSize = "25sp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+        android:textColor="@color/main_red"/>
+
     <EditText
+        android:id="@+id/phone_number_edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Enter Phone Number"
-        android:textColorHint="@color/light_gray"
         android:layout_marginLeft="83dp"
-        android:inputType="number"/>
+        android:hint="Enter Phone Number"
+        android:inputType="textPhonetic"
+        android:text="0111111111"
+        android:textColorHint="@color/light_gray" />
 </LinearLayout>
 
 <LinearLayout
@@ -82,15 +121,26 @@ android:orientation="vertical"
         android:layout_width = "wrap_content"
         android:layout_height = "wrap_content"
         android:text = "User Name"
-        android:textSize = "15dp"
-        />
+        android:textSize = "15dp" />
+
+    <TextView
+        android:layout_width = "wrap_content"
+        android:layout_height = "wrap_content"
+        android:text = "*"
+        android:textSize = "25sp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+        android:textColor="@color/main_red"/>
+
     <EditText
+        android:id="@+id/username_edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Set your User Name"
-        android:textColorHint="@color/light_gray"
         android:layout_marginLeft="108dp"
-        android:inputType="text"/>
+        android:hint="Set your User Name"
+        android:inputType="text"
+        android:text="omda"
+        android:textColorHint="@color/light_gray" />
 
 </LinearLayout>
 
@@ -103,38 +153,29 @@ android:orientation="vertical"
         android:layout_width = "wrap_content"
         android:layout_height = "wrap_content"
         android:text = "Password"
-        android:textSize = "15dp"
-        />
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="Set your Password"
-        android:textColorHint="@color/light_gray"
-        android:layout_marginLeft="118dp"
-        android:inputType="textPassword"/>
+        android:textSize = "15dp" />
 
-</LinearLayout>
-
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:layout_marginLeft="10dp">
     <TextView
         android:layout_width = "wrap_content"
         android:layout_height = "wrap_content"
-        android:text = "Confirm Password"
-        android:textSize = "15dp"
-        />
+        android:text = "*"
+        android:textSize = "25sp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+        android:textColor="@color/main_red"/>
+
     <EditText
+        android:id="@+id/password_edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Password confirmation"
-        android:textColorHint="@color/light_gray"
-        android:layout_marginLeft="60dp"
-        android:inputType="textPassword"/>
+        android:layout_marginLeft="118dp"
+        android:hint="Set your Password"
+        android:inputType="textPassword"
+        android:text="12345678"
+        android:textColorHint="@color/light_gray" />
 
 </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -146,14 +187,13 @@ android:orientation="vertical"
             android:layout_height = "wrap_content"
             android:text = "Gender"
             android:textSize = "15dp"
-            android:layout_marginTop="20dp"
-            />
+            android:layout_marginTop="20dp" />
 
         <RadioGroup
             android:id="@+id/gender_btn"
             android:layout_width="167dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="135dp"
+            android:layout_marginLeft="152dp"
             android:orientation="horizontal">
 
             <RadioButton
@@ -180,16 +220,26 @@ android:orientation="vertical"
             android:layout_width = "wrap_content"
             android:layout_height = "wrap_content"
             android:text = "Age"
-            android:textSize = "15dp"
+            android:textSize = "15dp" />
 
-            />
+        <TextView
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:text = "*"
+            android:textSize = "25sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="5dp"
+            android:textColor="@color/main_red"/>
+
         <EditText
+            android:id="@+id/age_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="159dp"
             android:hint="Enter your Age"
-            android:textColorHint="@color/light_gray"
-            android:layout_marginLeft="160dp"
-            android:inputType="number"/>
+            android:inputType="number"
+            android:text="24" />
+
 
     </LinearLayout>
     <LinearLayout
@@ -201,15 +251,26 @@ android:orientation="vertical"
             android:layout_width = "wrap_content"
             android:layout_height = "wrap_content"
             android:text = "Email"
-            android:textSize = "15dp"
-            />
+            android:textSize = "15dp" />
+
+        <TextView
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:text = "*"
+            android:textSize = "25sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="5dp"
+            android:textColor="@color/main_red"/>
+
         <EditText
+            android:id="@+id/email_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Enter your Email"
-            android:textColorHint="@color/light_gray"
             android:layout_marginLeft="148dp"
-            android:inputType="textEmailAddress"/>
+            android:hint="Enter your Email"
+            android:inputType="textEmailAddress"
+            android:text="emddad@g.c"
+            android:textColorHint="@color/light_gray" />
 
     </LinearLayout>
     <LinearLayout
@@ -221,16 +282,22 @@ android:orientation="vertical"
             android:layout_width = "wrap_content"
             android:layout_height = "wrap_content"
             android:text = "Address"
-            android:textSize = "15dp"
+            android:textSize = "15dp" />
 
-            />
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="Enter your Address"
-            android:textColorHint="@color/light_gray"
-            android:layout_marginLeft="130dp"
-            android:inputType="number"/>
+        <TextView
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:text = "*"
+            android:textSize = "25sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="5dp"
+            android:textColor="@color/main_red"/>
+
+        <Spinner
+            android:id="@+id/address_spinner"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="130dp" />
 
     </LinearLayout>
 
@@ -238,24 +305,215 @@ android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="20dp">
-
-        <Button
-            android:id="@+id/back_to_register_as"
+        android:layout_marginLeft="10dp">
+        <TextView
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:text = "Blood type:"
+            android:textSize = "15dp"
+            android:layout_marginTop="10dp"/>
+        <TextView
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:text = "*"
+            android:textSize = "25sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="5dp"
+            android:textColor="@color/main_red"/>
+        <RadioGroup
+            android:id="@+id/blood_type_btn"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Back"
-            android:layout_marginLeft="20dp"/>
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginLeft="110dp">
 
-        <Button
-            android:id="@+id/cont_person_reg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Next"
-            android:layout_marginLeft="180dp"/>
+            <RadioButton
+                android:id="@+id/blood_a_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="A" />
+            <RadioButton
+                android:id="@+id/blood_b_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="B" />
+
+            <RadioButton
+                android:id="@+id/blood_ab_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="AB" />
+            <RadioButton
+                android:id="@+id/blood_o_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:text="O" />
+        </RadioGroup>
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="RH Type"
+            android:textSize="15dp" />
+
+        <TextView
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:text = "*"
+            android:textSize = "25sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="5dp"
+            android:textColor="@color/main_red"/>
+
+        <RadioGroup
+            android:id="@+id/rh_type_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginLeft="130dp">
+            <RadioButton
+                android:id="@+id/positive_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Postive" />
+            <RadioButton
+                android:id="@+id/negative_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Negative" />
+
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="When was the last time you have donate?"
+                android:textSize="20dp"
+                android:textColor="@color/main_red"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width = "wrap_content"
+                android:layout_height = "wrap_content"
+                android:text = "*"
+                android:textSize = "25sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/main_red"/>
+
+        </LinearLayout>
+
+        <RadioGroup
+            android:id="@+id/last_donation_time"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/less_than_56days_radio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Less than 56days"
+                android:textSize="15dp"/>
+
+            <RadioButton
+                android:id="@+id/more_than_56days_radio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="More Than 56 days"
+                android:textSize="15dp"/>
+
+            <RadioButton
+                android:id="@+id/never_donate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Never Donate"
+                android:textSize="15dp"/>
+
+        </RadioGroup>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/reg_terms_policies_checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/reg_terms_policies_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Accept Terms and Policies"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp">
+
+            <Button
+                android:id="@+id/back_to_welcome_from_reg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Back"
+                android:layout_marginLeft="20dp"/>
+
+            <Button
+                android:id="@+id/done_reg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="180dp"
+                android:onClick="createAccount"
+                android:text="Done" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:layout_marginLeft="180dp"/>
 
 
 
 </LinearLayout>
+
+
+</ScrollView>

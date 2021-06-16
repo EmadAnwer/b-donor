@@ -46,5 +46,18 @@ public class Patient_intro_Request extends AppCompatActivity {
 
             }
         });
+
+        ImageView track_request_icon = findViewById(R.id.track_request_icon);
+        track_request_icon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(Patient_intro_Request.this,Track_request_items.class);
+                startActivity(intent);
+
+                Toast.makeText(getApplicationContext(), "Patient Track Request",Toast.LENGTH_LONG).show();
+
+            }
+        });
     }
 }

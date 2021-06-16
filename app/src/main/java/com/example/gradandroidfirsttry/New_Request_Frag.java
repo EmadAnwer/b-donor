@@ -69,9 +69,35 @@ public class New_Request_Frag extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(getActivity(),Main_History.class);
+                Intent intent = new Intent(getActivity(),Track_request_items.class);
                 startActivity(intent);
                 intent = null;
+
+
+
+//                public void OrderPlaced(View v ) {
+//                    //startActivity(new Intent(MainActivity.this,TrackActivity.class));
+//                    String orderStatus="0";
+//                    Intent intent=new Intent(getActivity(),Track_request_items.class);
+//                    intent.putExtra("orderStatus",orderStatus);
+//                    startActivity(intent);
+//                }
+//
+//                public void OrderConfirmed(View v) {
+//                    String orderStatus="1";
+//                    Intent intent=new Intent(getActivity(),Track_request_items.class);
+//                    intent.putExtra("orderStatus",orderStatus);
+//                    startActivity(intent);
+//                }
+//
+//
+//                public void OrderPickup(View v) {
+//                    String orderStatus="3";
+//                    Intent intent=new Intent(getActivity(),Track_request_items.class);
+//                    intent.putExtra("orderStatus",orderStatus);
+//                    startActivity(intent);
+//                }
+//
 
                 //make your toast here
                 Toast.makeText(getContext(),"Track the Request",Toast.LENGTH_LONG).show();
@@ -80,6 +106,13 @@ public class New_Request_Frag extends Fragment {
 
 
         return v;
+
+    }
+
+}
+
+
+
 /*
         request_history=findViewById(R.id.history_icon);
         ArrayList<String>request=new ArrayList<>();
@@ -87,7 +120,13 @@ public class New_Request_Frag extends Fragment {
         getSupportFragmentManager().beginTransaction().replace(R.id.main_req_frame,
                 fragment1).commit();
  */
-    }
 
-}
 
+
+
+//                public void OrderProcessed(View v) {
+//                    String orderStatus="2";
+//                    Intent intent=new Intent(getActivity(),Track_request_items.class);
+//                    intent.putExtra("orderStatus",orderStatus);
+//                    startActivity(intent);
+//                }
