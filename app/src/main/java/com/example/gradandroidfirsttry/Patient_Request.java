@@ -22,6 +22,10 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.backendless.Backendless;
+import com.backendless.async.callback.AsyncCallback;
+import com.backendless.exceptions.BackendlessFault;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -64,7 +68,7 @@ public class Patient_Request extends AppCompatActivity {
             }
         });
 
-        Button done_req = findViewById(R.id.done_req);
+    /*    Button done_req = findViewById(R.id.done_req);
         done_req.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,7 +79,7 @@ public class Patient_Request extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Done! Now you can start tracking your request",Toast.LENGTH_LONG).show();
 
             }
-        });
+        });*/
 
         List<String> categories = new ArrayList<>();
         categories.add("Select your location");
@@ -184,7 +188,34 @@ public class Patient_Request extends AppCompatActivity {
                       builder.show();
              }
 
+     //new code
+    public void request(View view) {
+        PatientRequest patientRequest = new PatientRequest();
 
+        patientRequest.setName("Emad");
+        patientRequest.setBloodType("A");
+        patientRequest.setPhone("012222222");
+        patientRequest.setRHType("negative");
+        patientRequest.setPatientAge(30);
+        patientRequest.setGender("Male");
+        patientRequest.setQuantity(4);
+        patientRequest.setCity("Alexandria");
+        patientRequest.setCity("Alexandria Hotel");
+        patientRequest.setPicture_url("https://cdn.getyourguide.com/img/location/540dc894dff37-m1409674485.jpg/92.jpg");
+
+        Backendless.Data.of(PatientRequest.class).save(patientRequest, new AsyncCallback<PatientRequest>() {
+            @Override
+            public void handleResponse(PatientRequest response) {
+
+            }
+
+            @Override
+            public void handleFault(BackendlessFault fault) {
+
+            }
+        });
+
+    }
 }
 
    /*  // this event will enable the back
