@@ -50,6 +50,7 @@
         android:textSize = "20sp"
         android:layout_marginLeft="10dp"/>
     <EditText
+        android:id="@+id/patient_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="Enter first Name"
@@ -72,6 +73,7 @@
         android:textSize = "20sp"
         android:layout_marginLeft="10dp"/>
     <EditText
+        android:id="@+id/patient_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="Enter Phone Number"
@@ -95,29 +97,29 @@
             android:layout_marginTop="10dp"/>
 
             <RadioGroup
-                android:id="@+id/blood_type_btn"
+                android:id="@+id/patient_blood_type_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
                 android:layout_marginLeft="80dp">
                 <RadioButton
-                    android:id="@+id/blood_a_btn"
+                    android:id="@+id/patient_blood_a_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="A" />
                 <RadioButton
-                    android:id="@+id/blood_b_btn"
+                    android:id="@+id/patient_blood_b_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="B" />
 
                 <RadioButton
-                    android:id="@+id/blood_ab_btn"
+                    android:id="@+id/patient_blood_ab_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="AB" />
                 <RadioButton
-                    android:id="@+id/blood_o_btn"
+                    android:id="@+id/patient_blood_o_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="3dp"
@@ -141,18 +143,19 @@
             android:textSize="20sp" />
 
             <RadioGroup
-                android:id="@+id/blood_type_ab__btn"
+                android:id="@+id/patient_rh_type_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
                 android:layout_marginLeft="108dp">
+
                 <RadioButton
-                    android:id="@+id/pos_ab_btn"
+                    android:id="@+id/patient_pos_rh_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Postive" />
                 <RadioButton
-                    android:id="@+id/neg_ab_btn"
+                    android:id="@+id/patient_neg_rh_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Negative" />
@@ -176,13 +179,15 @@
             android:textSize = "15dp"
             android:layout_marginLeft="10dp"
             />
+
         <EditText
+            android:id="@+id/patient_age"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Enter your Age"
-            android:textColorHint="@color/light_gray"
             android:layout_marginLeft="158dp"
-            android:inputType="number"/>
+            android:hint="Enter your Age"
+            android:inputType="number"
+            android:textColorHint="@color/light_gray" />
 
     </LinearLayout>
 
@@ -236,6 +241,7 @@
             android:layout_marginLeft="10dp"
             />
         <EditText
+            android:id="@+id/patient_needed_quantity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="Enter needed quantity"

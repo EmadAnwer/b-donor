@@ -11,14 +11,18 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -48,16 +52,19 @@ public class Patient_Request extends AppCompatActivity {
     Button req_doc_pic;
     ImageView upload_pic;
 
+    EditText patient_name, patient_number, patient_age, patient_needed_quantity;
+
+    private RadioButton patient_radio_male_btn, patient_radio_female_btn, patient_radio_a_blood_type,
+            patient_radio_b_blood_type, patient_radio_ab_blood_type, patient_radio_o_blood_type,
+            patient_radio_pos_rh_type, patient_radio_neg_rh_type;
+
+    private RadioGroup patient_radio_group_blood_type_btn, patient_radio_group_rh_type_btn;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.patient_request);
-
-        /* // calling the action bar
-        ActionBar actionBar = getSupportActionBar();
-
-        // showing the back button in action bar
-        actionBar.setDisplayHomeAsUpEnabled(true);  */
 
         // Hide ActionBar
         if (getSupportActionBar() != null) {
@@ -76,6 +83,22 @@ public class Patient_Request extends AppCompatActivity {
 
             }
         });
+
+        patient_name = findViewById(R.id.patient_name);
+        patient_number = findViewById(R.id.patient_number);
+        patient_age = findViewById(R.id.patient_age);
+        patient_needed_quantity = findViewById(R.id.patient_needed_quantity);
+        patient_radio_male_btn = findViewById(R.id.pat_male_btn);
+        patient_radio_female_btn = findViewById(R.id.pat_female_btn);
+        patient_radio_a_blood_type = findViewById(R.id.patient_blood_a_btn);
+        patient_radio_b_blood_type = findViewById(R.id.patient_blood_b_btn);
+        patient_radio_ab_blood_type = findViewById(R.id.patient_blood_ab_btn);
+        patient_radio_o_blood_type = findViewById(R.id.patient_blood_o_btn);
+        patient_radio_pos_rh_type = findViewById(R.id.patient_pos_rh_btn);
+        patient_radio_neg_rh_type = findViewById(R.id.patient_neg_rh_btn);
+        patient_radio_group_blood_type_btn = findViewById(R.id.patient_blood_type_btn);
+        patient_radio_group_rh_type_btn = findViewById(R.id.patient_rh_type_btn);
+
 
         city_spinner = (Spinner)findViewById(R.id.set_req_city);
         hospital_spinner = (Spinner)findViewById(R.id.set_req_hospital);
@@ -146,6 +169,240 @@ public class Patient_Request extends AppCompatActivity {
         });
 
 
+        req_doc_pic=(Button)findViewById(R.id.btnSelectPhoto);
+        upload_pic=(ImageView)findViewById(R.id.upload_document_pic);
+        req_doc_pic.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                selectImage();
+            }
+        });
+
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds options to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.upload_doc_pic_menu, menu);
+        return true;
+    }
+    private void selectImage() {
+        final CharSequence[] options = { "Take Photo", "Choose from Gallery","Cancel" };
+        AlertDialog.Builder builder = new AlertDialog.Builder(Patient_Request.this);
+        builder.setTitle("Add Photo!");
+        builder.setItems(options, new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int item) {
+                if (options[item].equals("Take Photo"))
+                {
+                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    File f = new File(android.os.Environment.getExternalStorageDirectory(), "temp.jpg");
+                    intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
+                    startActivityForResult(intent, 1);
+                }
+                else if (options[item].equals("Choose from Gallery"))
+                {
+                    Intent intent = new   Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    startActivityForResult(intent, 2);
+                }
+                else if (options[item].equals("Cancel")) {
+                    dialog.dismiss();
+                }
+            }
+        });
+        builder.show();
+    }
+
+    //new code
+    public void request(View view) {
+        PatientRequest patientRequest = new PatientRequest();
+
+        final String name = patient_name.getText().toString();
+        final String phone = patient_number.getText().toString();
+        final int needed_quantity = Integer.parseInt(patient_needed_quantity.getText().toString());
+        final int age = Integer.parseInt(patient_age.getText().toString());
+
+        String gender = "";
+        String blood_type = "";
+        String rh_type = "";
+
+        String city = city_spinner.getSelectedItem().toString();
+        String hospital = hospital_spinner.getSelectedItem().toString();
+
+        if (patient_radio_male_btn.isChecked()) {
+            gender = "Male";
+        } else if (patient_radio_female_btn.isChecked()) {
+            gender = "Female";
+        }
+
+        if (patient_radio_a_blood_type.isChecked()) {
+            blood_type = "A";
+        } else if (patient_radio_b_blood_type.isChecked()) {
+            blood_type = "B";
+        } else if (patient_radio_ab_blood_type.isChecked()) {
+            blood_type = "AB";
+        } else if (patient_radio_o_blood_type.isChecked()) {
+            blood_type = "O";
+        }
+
+        if (patient_radio_neg_rh_type.isChecked()) {
+            rh_type = "Negative";
+        } else if (patient_radio_pos_rh_type.isChecked()) {
+            rh_type = "Positive";
+        }
+
+        int blood_type_group = patient_radio_group_blood_type_btn.getCheckedRadioButtonId();
+        int rh_type_group = patient_radio_group_rh_type_btn.getCheckedRadioButtonId();
+
+
+
+        if (TextUtils.isEmpty(name)) {
+            patient_name.setError("Patient Name is Required.");
+            return;
+        }
+
+
+        if (TextUtils.isEmpty(phone)) {
+            patient_number.setError("First Name is Required.");
+            return;
+        }
+
+
+        if (blood_type_group == -1) {
+            Toast.makeText(Patient_Request.this, "Please insert your Blood type.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (rh_type_group == -1) {
+            Toast.makeText(Patient_Request.this, "Please insert your RH type.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+
+        patientRequest.setName(name);
+        patientRequest.setPhone(phone);
+        patientRequest.setBloodType(blood_type);
+        patientRequest.setRHType(rh_type);
+        patientRequest.setPatientAge(age);
+        patientRequest.setGender(gender);
+        patientRequest.setQuantity(needed_quantity);
+        patientRequest.setCity(city);
+        patientRequest.setHospital(hospital);
+        patientRequest.setPicture_url("https://cdn.getyourguide.com/img/location/540dc894dff37-m1409674485.jpg/92.jpg");
+
+        Backendless.Data.of(PatientRequest.class).save(patientRequest, new AsyncCallback<PatientRequest>() {
+            @Override
+            public void handleResponse(PatientRequest response) {
+
+                Toast.makeText(Patient_Request.this, "Request Done!", Toast.LENGTH_LONG).show();
+                onBackPressed();
+
+            }
+
+            @Override
+            public void handleFault(BackendlessFault fault) {
+
+                Toast.makeText(Patient_Request.this, "Error!", Toast.LENGTH_LONG).show();
+            }
+        });
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
+//
+//                     @Override
+//                        public boolean onCreateOptionsMenu(Menu menu) {
+//                       // Inflate the menu; this adds options to the action bar if it is present.
+//                      getMenuInflater().inflate(R.menu.upload_doc_pic_menu, menu);
+//                       return true;
+//                 }
+//                       private void selectImage() {
+//                        final CharSequence[] options = { "Take Photo", "Choose from Gallery","Cancel" };
+//                        AlertDialog.Builder builder = new AlertDialog.Builder(Patient_Request.this);
+//                        builder.setTitle("Add Photo!");
+//                        builder.setItems(options, new DialogInterface.OnClickListener() {
+//
+//                        @Override
+//                         public void onClick(DialogInterface dialog, int item) {
+//                         if (options[item].equals("Take Photo"))
+//                              {
+//                                  Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//                                  File f = new File(android.os.Environment.getExternalStorageDirectory(), "temp.jpg");
+//                                  intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
+//                                  startActivityForResult(intent, 1);
+//                              }
+//                         else if (options[item].equals("Choose from Gallery"))
+//                              {
+//                                  Intent intent = new   Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+//                                  startActivityForResult(intent, 2);
+//                              }
+//                         else if (options[item].equals("Cancel")) {
+//                                 dialog.dismiss();
+//                              }
+//                        }
+//                  });
+//                      builder.show();
+//             }
+//
+//     //new code
+//    public void request(View view) {
+//        PatientRequest patientRequest = new PatientRequest();
+//
+//        patientRequest.setName("Emad");
+//        patientRequest.setBloodType("A");
+//        patientRequest.setPhone("012222222");
+//        patientRequest.setRHType("Negative");
+//        patientRequest.setPatientAge(30);
+//        patientRequest.setGender("Male");
+//        patientRequest.setQuantity(4);
+//        patientRequest.setCity("Alexandria");
+//        patientRequest.setHospital("Alexandria hospital");
+//        patientRequest.setPicture_url("https://cdn.getyourguide.com/img/location/540dc894dff37-m1409674485.jpg/92.jpg");
+//
+//        Backendless.Data.of(PatientRequest.class).save(patientRequest, new AsyncCallback<PatientRequest>() {
+//            @Override
+//            public void handleResponse(PatientRequest response) {
+//
+//                onBackPressed();
+//
+//            }
+//
+//            @Override
+//            public void handleFault(BackendlessFault fault) {
+//
+//            }
+//        });
+//
+//    }
+//}
+
+
+
+
     /*    Button done_req = findViewById(R.id.done_req);
         done_req.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -207,18 +464,6 @@ public class Patient_Request extends AppCompatActivity {
 //        });
 
 
-          req_doc_pic=(Button)findViewById(R.id.btnSelectPhoto);
-          upload_pic=(ImageView)findViewById(R.id.upload_document_pic);
-          req_doc_pic.setOnClickListener(new View.OnClickListener() {
-
-                   @Override
-                    public void onClick(View v) {
-                       selectImage();
-                      }
-                   });
-
-    }
-
 
 //        private void fillSpinner() {
 //
@@ -234,71 +479,6 @@ public class Patient_Request extends AppCompatActivity {
 //        }
 
 
-                     @Override
-                        public boolean onCreateOptionsMenu(Menu menu) {
-                       // Inflate the menu; this adds options to the action bar if it is present.
-                      getMenuInflater().inflate(R.menu.upload_doc_pic_menu, menu);
-                       return true;
-                 }
-                       private void selectImage() {
-                        final CharSequence[] options = { "Take Photo", "Choose from Gallery","Cancel" };
-                        AlertDialog.Builder builder = new AlertDialog.Builder(Patient_Request.this);
-                        builder.setTitle("Add Photo!");
-                        builder.setItems(options, new DialogInterface.OnClickListener() {
-
-                        @Override
-                         public void onClick(DialogInterface dialog, int item) {
-                         if (options[item].equals("Take Photo"))
-                              {
-                                  Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                                  File f = new File(android.os.Environment.getExternalStorageDirectory(), "temp.jpg");
-                                  intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
-                                  startActivityForResult(intent, 1);
-                              }
-                         else if (options[item].equals("Choose from Gallery"))
-                              {
-                                  Intent intent = new   Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                                  startActivityForResult(intent, 2);
-                              }
-                         else if (options[item].equals("Cancel")) {
-                                 dialog.dismiss();
-                              }
-                        }
-                  });
-                      builder.show();
-             }
-
-     //new code
-    public void request(View view) {
-        PatientRequest patientRequest = new PatientRequest();
-
-        patientRequest.setName("Emad");
-        patientRequest.setBloodType("A");
-        patientRequest.setPhone("012222222");
-        patientRequest.setRHType("Negative");
-        patientRequest.setPatientAge(30);
-        patientRequest.setGender("Male");
-        patientRequest.setQuantity(4);
-        patientRequest.setCity("Alexandria");
-        patientRequest.setHospital("Alexandria hospital");
-        patientRequest.setPicture_url("https://cdn.getyourguide.com/img/location/540dc894dff37-m1409674485.jpg/92.jpg");
-
-        Backendless.Data.of(PatientRequest.class).save(patientRequest, new AsyncCallback<PatientRequest>() {
-            @Override
-            public void handleResponse(PatientRequest response) {
-
-                onBackPressed();
-
-            }
-
-            @Override
-            public void handleFault(BackendlessFault fault) {
-
-            }
-        });
-
-    }
-}
 
    /*  // this event will enable the back
     // function to the button on press

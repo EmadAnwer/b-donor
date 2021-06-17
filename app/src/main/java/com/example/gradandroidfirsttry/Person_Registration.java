@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
@@ -55,6 +56,7 @@ public class Person_Registration extends AppCompatActivity implements AsyncCallb
             radio_ab_blood_type, radio_o_blood_type, radio_pos_rh_type, radio_neg_rh_type;
     private RadioGroup radio_group_blood_type_btn, radio_group_rh_type_btn, radio_group_last_donation_time;
     private Spinner address_spinner;
+    private CheckBox reg_terms_policies_checkbox;
 
     ProgressBar progressBar;
 
@@ -97,6 +99,10 @@ public class Person_Registration extends AppCompatActivity implements AsyncCallb
         radio_group_blood_type_btn = findViewById(R.id.blood_type_btn);
         radio_group_rh_type_btn = findViewById(R.id.rh_type_btn);
         radio_group_last_donation_time = findViewById(R.id.last_donation_time);
+
+
+        reg_terms_policies_checkbox = findViewById(R.id.reg_terms_policies_checkbox);
+        reg_terms_policies_checkbox.setChecked(true);
 
 
         address_spinner = findViewById(R.id.address_spinner);
