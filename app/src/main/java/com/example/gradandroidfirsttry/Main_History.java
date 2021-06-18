@@ -57,6 +57,7 @@ public class Main_History extends AppCompatActivity {
     }
     void test()
     {
+        queryBuilder.setPageSize(100);
         Backendless.Data.of(PatientRequest.class).find(queryBuilder,new AsyncCallback<List<PatientRequest>>() {
             @Override
             public void handleResponse(List<PatientRequest> response) {
