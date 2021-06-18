@@ -14,6 +14,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.backendless.Backendless;
+import com.backendless.BackendlessUser;
 import com.backendless.async.callback.AsyncCallback;
 import com.backendless.exceptions.BackendlessFault;
 import com.backendless.persistence.DataQueryBuilder;
@@ -26,7 +27,7 @@ public class ProgressActivity extends AppCompatActivity {
     SharedPreferences pref;
     String requestID;
     DataQueryBuilder queryBuilder = DataQueryBuilder.create();
-
+    String bloodType,address,rh_type;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +41,9 @@ public class ProgressActivity extends AppCompatActivity {
 
         pref = getSharedPreferences("requestProgress", Context.MODE_PRIVATE);
         requestID = pref.getString("requestID","null");
+        bloodType = pref.getString("bloodType","null");
+        address = pref.getString("city","null");
+        rh_type = pref.getString("RH","null");
 
         if(requestID.equals("Accepted"))
         {
@@ -52,8 +56,10 @@ public class ProgressActivity extends AppCompatActivity {
     }
 
     void getProgress(){
-        queryBuilder.setWhereClause("objectId ='"+requestID +"'");
-        Backendless.Data.of(PatientRequest.class).getObjectCount(queryBuilder, new AsyncCallback<Integer>() {
+
+        queryBuilder.setWhereClause("blood_type = '"+bloodType+"' and address= '"+address+"' and rh_type = '"+rh_type+"'"+"and ownerId !='"+Backendless.UserService.loggedInUser()+"'");
+
+        Backendless.Data.of(BackendlessUser.class).getObjectCount(queryBuilder, new AsyncCallback<Integer>() {
             @Override
             public void handleResponse(Integer response) {
                 if(response != 0)

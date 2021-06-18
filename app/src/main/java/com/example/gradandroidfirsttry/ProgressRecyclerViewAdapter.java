@@ -67,6 +67,10 @@ public class ProgressRecyclerViewAdapter extends RecyclerView.Adapter<ProgressRe
             editor.putString("requestID", "Accepted");
         else
             editor.putString("requestID", p.getObjectId());
+
+        editor.putString("city", p.getCity());
+        editor.putString("bloodType", p.getBloodType());
+        editor.putString("RH", p.getRHType());
         editor.apply();
 
         // intent to PlacesActivity
