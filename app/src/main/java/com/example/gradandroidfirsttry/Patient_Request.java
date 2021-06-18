@@ -249,9 +249,9 @@ public class Patient_Request extends AppCompatActivity {
         }
 
         if (patient_radio_neg_rh_type.isChecked()) {
-            rh_type = "Negative";
+            rh_type = "-ve";
         } else if (patient_radio_pos_rh_type.isChecked()) {
-            rh_type = "Positive";
+            rh_type = "+ve";
         }
 
         int blood_type_group = patient_radio_group_blood_type_btn.getCheckedRadioButtonId();

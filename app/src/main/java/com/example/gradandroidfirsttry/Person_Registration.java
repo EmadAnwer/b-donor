@@ -134,7 +134,7 @@ public class Person_Registration extends AppCompatActivity implements AsyncCallb
         final String last_name = last_name_edit.getText().toString();
         final String phone = phone_number_edit.getText().toString();
         final String username = username_edit.getText().toString();
-        final int age = Integer.valueOf(age_edit.getText().toString());
+        final int age = Integer.parseInt(age_edit.getText().toString());
 
         String gender = "";
         String blood_type = "";
@@ -159,9 +159,9 @@ public class Person_Registration extends AppCompatActivity implements AsyncCallb
         }
 
         if (radio_neg_rh_type.isChecked()) {
-            rh_type = "Negative";
+            rh_type = "-ve";
         } else if (radio_pos_rh_type.isChecked()) {
-            rh_type = "Positive";
+            rh_type = "+ve";
         }
 
         int blood_type_group = radio_group_blood_type_btn.getCheckedRadioButtonId();
@@ -246,6 +246,8 @@ public class Person_Registration extends AppCompatActivity implements AsyncCallb
     @Override
     public void handleResponse(BackendlessUser response) {
         Toast.makeText(this, "Registration Done!", Toast.LENGTH_SHORT).show();
+
+        onBackPressed();
     }
 
     @Override

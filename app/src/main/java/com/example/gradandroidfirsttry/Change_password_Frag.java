@@ -121,6 +121,7 @@ public class Change_password_Frag extends Fragment {
                 fragmentTransaction.replace(R.id.change_password_frag, new Privacy_and_security_Frag());
                 fragmentTransaction.commit();
 
+
                 Toast.makeText(getActivity(), "Cancel", Toast.LENGTH_SHORT).show();
 
             }

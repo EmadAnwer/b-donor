@@ -384,12 +384,12 @@
                 android:id="@+id/positive_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Postive" />
+                android:text="+ve" />
             <RadioButton
                 android:id="@+id/negative_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Negative" />
+                android:text="-ve" />
 
 
         </RadioGroup>
