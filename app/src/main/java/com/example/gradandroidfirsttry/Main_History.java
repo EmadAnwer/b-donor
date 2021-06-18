@@ -9,6 +9,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 
 import android.content.Intent;
+import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+
+import com.backendless.Backendless;
+import com.backendless.async.callback.AsyncCallback;
+import com.backendless.exceptions.BackendlessFault;
+import com.backendless.persistence.DataQueryBuilder;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -17,8 +26,10 @@ public class Main_History extends AppCompatActivity {
 
     RecyclerView history_recyclerView2;
     HistoryRecyclerViewAdapter adapter;
-    List<History> historyList = new ArrayList<>();
-
+    List<PatientRequest> historyList = new ArrayList<>();
+    ProgressBar progressBar4;
+    TextView noRequestTextView2;
+    DataQueryBuilder queryBuilder;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +39,10 @@ public class Main_History extends AppCompatActivity {
             getSupportActionBar().hide();
         }
 
+        progressBar4 = findViewById(R.id.progressBar4);
+        noRequestTextView2 = findViewById(R.id.noRequestTextView2);
+        queryBuilder = DataQueryBuilder.create();
+        queryBuilder.setWhereClause("ownerId ='"+Backendless.UserService.loggedInUser()+"'");
         //setting historyRecyclerView
         history_recyclerView2 = findViewById(R.id.history_recyclerView2);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
@@ -42,14 +57,23 @@ public class Main_History extends AppCompatActivity {
     }
     void test()
     {
-        historyList.add(new History("Emad","A","done",new Date()));
-        historyList.add(new History("Ali","B","done",new Date()));
-        historyList.add(new History("Ahmed","O","done",new Date()));
-        historyList.add(new History("Alaa","A","done",new Date()));
-        historyList.add(new History("Alia","B","done",new Date()));
-        historyList.add(new History("Hoda","O","done",new Date()));
-        historyList.add(new History("Hana","AB+-","done",new Date()));
-        historyList.add(new History("Nora","AB-","done",new Date()));
+        Backendless.Data.of(PatientRequest.class).find(queryBuilder,new AsyncCallback<List<PatientRequest>>() {
+            @Override
+            public void handleResponse(List<PatientRequest> response) {
+                progressBar4.setVisibility(View.GONE);
+                historyList.addAll(response);
+                if(historyList.size() == 0)
+                    noRequestTextView2.setVisibility(View.VISIBLE);
+                adapter.notifyDataSetChanged();
+
+
+            }
+
+            @Override
+            public void handleFault(BackendlessFault fault) {
+
+            }
+        });
 
 
     }

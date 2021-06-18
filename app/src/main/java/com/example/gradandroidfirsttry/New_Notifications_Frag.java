@@ -88,7 +88,7 @@ public class New_Notifications_Frag extends Fragment {
     private void getUserNotifications()
     {
 
-        queryBuilder.setWhereClause("bloodType = '"+bloodType+"' and accepted = False  and city= '"+address+"' and RHType = '"+rh_type+"'");
+        queryBuilder.setWhereClause("bloodType = '"+bloodType+"' and accepted = False  and city= '"+address+"' and RHType = '"+rh_type+"'"+"and ownerId !='"+Backendless.UserService.loggedInUser()+"'");
         Log.i("asd", "bloodType = '"+bloodType+"' and accepted = False  and city= '"+address+"' and RHType = '"+rh_type+"'");
 
         Backendless.Data.of(PatientRequest.class).find(queryBuilder,new AsyncCallback<List<PatientRequest>>() {

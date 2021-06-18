@@ -10,6 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.backendless.Backendless;
+import com.backendless.async.callback.AsyncCallback;
+import com.backendless.exceptions.BackendlessFault;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -19,7 +23,7 @@ public class History_Fragment extends Fragment {
 
     RecyclerView historyRecyclerView;
     HistoryRecyclerViewAdapter adapter;
-    List<History> historyList = new ArrayList<>();
+    List<PatientRequest> historyList = new ArrayList<>();
 
 
     public History_Fragment() {
@@ -56,14 +60,25 @@ public class History_Fragment extends Fragment {
 
     void test()
     {
-        historyList.add(new History("Emad","A-","done",new Date()));
-        historyList.add(new History("Ali","B+","done",new Date()));
-        historyList.add(new History("Ahmed","O+","done",new Date()));
-        historyList.add(new History("Alaa","A+","done",new Date()));
-        historyList.add(new History("Alia","B-","done",new Date()));
-        historyList.add(new History("Hoda","O+","done",new Date()));
-        historyList.add(new History("Hana","AB+-","done",new Date()));
-        historyList.add(new History("Nora","AB-","done",new Date()));
+        Backendless.Data.of(PatientRequest.class).find(new AsyncCallback<List<PatientRequest>>() {
+            @Override
+            public void handleResponse(List<PatientRequest> response) {
+/*
+                progressBar3.setVisibility(View.GONE);
+*/
+                historyList.addAll(response);
+                /*if(notificationList.size() == 0)
+                    noRequestTextView.setVisibility(View.VISIBLE);*/
+                adapter.notifyDataSetChanged();
+
+
+            }
+
+            @Override
+            public void handleFault(BackendlessFault fault) {
+
+            }
+        });
 
 
     }
