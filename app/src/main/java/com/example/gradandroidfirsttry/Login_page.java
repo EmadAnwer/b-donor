@@ -25,6 +25,7 @@ import android.widget.Toast;
 import com.backendless.Backendless;
 import com.backendless.BackendlessUser;
 import com.backendless.async.callback.AsyncCallback;
+import com.backendless.async.callback.Fault;
 import com.backendless.exceptions.BackendlessFault;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -120,11 +121,14 @@ public class Login_page extends AppCompatActivity implements AsyncCallback<Backe
 
                 Backendless.UserService.login(email,password,Login_page.this,true);
 
+                Toast.makeText(Login_page.this, "Login user!", Toast.LENGTH_LONG).show();
+
 
             }
         });
 
     }
+
 
     @Override
     public void handleResponse(BackendlessUser response) {
@@ -137,6 +141,7 @@ public class Login_page extends AppCompatActivity implements AsyncCallback<Backe
         editor.putString("address", response.getProperty("address").toString());
         editor.putString("phone", response.getProperty("phone").toString());
         editor.putInt("user_age", (Integer) response.getProperty("user_age"));
+        editor.putString("user_name", response.getProperty("user_name").toString());
         editor.putString("gender", response.getProperty("gender").toString());
         editor.putString("blood_type", response.getProperty("blood_type").toString());
         editor.putString("rh_type", response.getProperty("rh_type").toString());

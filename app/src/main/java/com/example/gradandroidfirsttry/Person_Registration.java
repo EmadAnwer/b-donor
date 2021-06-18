@@ -228,6 +228,7 @@ public class Person_Registration extends AppCompatActivity implements AsyncCallb
         user.setProperty("last_name",last_name);
         user.setProperty("phone",phone);
         user.setProperty("user_age",age);
+        user.setProperty("user_name",username);
         user.setProperty("gender",gender);
         user.setProperty("blood_type",blood_type);
         user.setProperty("rh_type",rh_type);

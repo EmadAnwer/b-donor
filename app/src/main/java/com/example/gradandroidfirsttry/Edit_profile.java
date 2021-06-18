@@ -27,7 +27,7 @@ public class Edit_profile extends AppCompatActivity {
 
 
     EditText edit_name_profile, edit_username_profile, edit_email_profile, edit_phone_profile;
-    Button done;
+    Button done, cancel_edit_profile_btn;
 
 
     @Override
@@ -67,6 +67,15 @@ public class Edit_profile extends AppCompatActivity {
                 final String email = edit_email_profile.getText().toString();
 
 
+
+            }
+        });
+
+        cancel_edit_profile_btn = findViewById(R.id.cancel_edit_profile_btn);
+        cancel_edit_profile_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
 
             }
         });
