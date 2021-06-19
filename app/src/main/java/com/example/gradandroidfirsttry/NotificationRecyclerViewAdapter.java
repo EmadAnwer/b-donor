@@ -2,6 +2,7 @@ package com.example.gradandroidfirsttry;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,11 +13,20 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.backendless.Backendless;
+import com.backendless.BackendlessUser;
+import com.backendless.async.callback.AsyncCallback;
+import com.backendless.exceptions.BackendlessFault;
+import com.backendless.messaging.MessageStatus;
+
 import java.util.List;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class NotificationRecyclerViewAdapter extends RecyclerView.Adapter<NotificationRecyclerViewAdapter.ViewHolder> implements View.OnClickListener {
     List<PatientRequest> notificationList;
     Context context;
+    SharedPreferences pref;
 
     public NotificationRecyclerViewAdapter(List<PatientRequest> notificationList, Context context) {
         this.notificationList = notificationList;
@@ -57,7 +67,54 @@ public class NotificationRecyclerViewAdapter extends RecyclerView.Adapter<Notifi
         if (v.getId() == R.id.acceptImageView)
         {
             int p = (int) v.getTag();
-            Toast.makeText(context, "accepted TODO", Toast.LENGTH_SHORT).show();
+            PatientRequest patientRequest = new PatientRequest();
+            patientRequest.setObjectId(notificationList.get(p).getObjectId());
+            patientRequest.setAccepted(true);
+            notificationList.remove(p);
+            notifyDataSetChanged();
+
+            Backendless.Data.save(patientRequest, new AsyncCallback<PatientRequest>() {
+                @Override
+                public void handleResponse(PatientRequest response) {
+
+                    Backendless.Data.of(BackendlessUser.class).findById(response.getOwnerId(), new AsyncCallback<BackendlessUser>() {
+                        @Override
+                        public void handleResponse(BackendlessUser response) {
+
+                            pref = context.getSharedPreferences("userData", MODE_PRIVATE);
+                            String name = pref.getString("first_name","null");
+                            String phone = pref.getString("phone","null");
+                            Backendless.Messaging.sendTextEmail("Your request has been accepted",
+                                    "Your request has been accepted. \n\nPlease contact "+name +".\nThe contact number is "+phone, response.getEmail(), new AsyncCallback<MessageStatus>() {
+                                        @Override
+                                        public void handleResponse(MessageStatus response) {
+                                            Log.i("Email", "response: "+response.toString());
+                                        }
+
+                                        @Override
+                                        public void handleFault(BackendlessFault fault) {
+                                            Log.i("Email", "handleFault: "+fault.toString());
+                                        }
+                                    });
+                        }
+
+                        @Override
+                        public void handleFault(BackendlessFault fault) {
+
+                        }
+                    });
+
+
+
+                }
+
+                @Override
+                public void handleFault(BackendlessFault fault) {
+
+                }
+            });
+
+
         }
         else if (v.getId() == R.id.nRejectImageView)
         {

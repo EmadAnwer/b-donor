@@ -84,6 +84,10 @@ public class PatientRequest {
         this.hospital = hospital;
     }
 
+    public void setObjectId(String objectId) {
+        this.objectId = objectId;
+    }
+
     public String getObjectId()
     {
         return objectId;
