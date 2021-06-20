@@ -85,7 +85,7 @@ public class New_Profile_Frag extends Fragment {
 
 
         sprofileName = pref.getString("first_name", String.valueOf(nprofileName));
-        suserName = pref.getString("username", String.valueOf(nusername_profile));
+        suserName = pref.getString("user_name", String.valueOf(nusername_profile));
         semail = pref.getString("email", String.valueOf(nemail_profile));
         sbloodType = pref.getString("blood_type", String.valueOf(nblood_type_profile));
         srh_type = pref.getString("rh_type", String.valueOf(nrh_type_profile));
