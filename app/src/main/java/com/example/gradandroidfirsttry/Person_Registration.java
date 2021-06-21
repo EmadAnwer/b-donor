@@ -98,9 +98,6 @@ public class Person_Registration extends AppCompatActivity implements AsyncCallb
                         "\n \n 3-Diseases must not be from the Following : Malaria , Hereditary blood diseases , Diabetics, Sever Anemia , Cancer , Blood Pressure , Heart Diseases " +
                         "\n \n 4-Between every donation process must be 56 Days" );
 
-                // Setting Icon to Dialog
-//                builder.setIcon(R.drawable.tick);
-
                 // Setting OK Button
                 builder.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
 

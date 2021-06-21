@@ -19,14 +19,14 @@
 
     <TextView
         android:id="@+id/nTimeTextView"
-        android:layout_width="61dp"
-        android:layout_height="24dp"
+        android:layout_width="108dp"
+        android:layout_height="26dp"
         android:text="Time"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/nLocationTextView"
-        app:layout_constraintTop_toBottomOf="@+id/nBloodGroupTextView" />
+        app:layout_constraintStart_toEndOf="@+id/nPhoneNoTextView"
+        app:layout_constraintTop_toBottomOf="@+id/nHospitalTextView" />
 
     <TextView
         android:id="@+id/nQuantityTextView"
@@ -96,6 +96,24 @@
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/nBloodGroupTextView"
         app:layout_constraintTop_toBottomOf="@+id/nBloodGroupTextView" />
+
+    <TextView
+        android:id="@+id/nHospitalTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hospital"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/nLocationTextView"
+        app:layout_constraintTop_toBottomOf="@+id/nLocationTextView" />
+
+    <TextView
+        android:id="@+id/nPhoneNoTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Phone Number"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/nHospitalTextView"
+        app:layout_constraintTop_toBottomOf="@+id/nHospitalTextView" />
 
     <ImageView
         android:id="@+id/acceptImageView"

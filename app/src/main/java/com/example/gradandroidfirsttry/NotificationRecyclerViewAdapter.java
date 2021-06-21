@@ -50,6 +50,8 @@ public class NotificationRecyclerViewAdapter extends RecyclerView.Adapter<Notifi
         holder.bloodGroupTextView.setText(notificationList.get(position).getBloodType());
         holder.rhTypeTextView.setText(notificationList.get(position).getRHType());
         holder.locationTextView.setText(notificationList.get(position).getCity());
+        holder.hospitalTextView.setText(notificationList.get(position).getHospital());
+        holder.phoneNoTextView.setText(notificationList.get(position).getPhone());
         holder.timeTextView.setText(notificationList.get(position).getCreated().toString());
         holder.acceptImageView.setOnClickListener(this);
         holder.nRejectImageView.setOnClickListener(this);
@@ -127,7 +129,7 @@ public class NotificationRecyclerViewAdapter extends RecyclerView.Adapter<Notifi
 
 
     public static class ViewHolder  extends RecyclerView.ViewHolder{
-        TextView patientNameTextView,quantityTextView,bloodGroupTextView,rhTypeTextView,locationTextView,timeTextView;
+        TextView patientNameTextView, quantityTextView, bloodGroupTextView, rhTypeTextView, locationTextView, hospitalTextView, phoneNoTextView, timeTextView;
         ImageView acceptImageView,nRejectImageView;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -136,6 +138,8 @@ public class NotificationRecyclerViewAdapter extends RecyclerView.Adapter<Notifi
             bloodGroupTextView= itemView.findViewById(R.id.nBloodGroupTextView);
             rhTypeTextView= itemView.findViewById(R.id.nRHTypeTextView);
             locationTextView= itemView.findViewById(R.id.nLocationTextView);
+            hospitalTextView= itemView.findViewById(R.id.nHospitalTextView);
+            phoneNoTextView= itemView.findViewById(R.id.nPhoneNoTextView);
             timeTextView= itemView.findViewById(R.id.nTimeTextView);
             acceptImageView= itemView.findViewById(R.id.acceptImageView);
             nRejectImageView= itemView.findViewById(R.id.nRejectImageView);

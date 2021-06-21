@@ -1,5 +1,7 @@
 package com.example.gradandroidfirsttry;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -9,6 +11,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -18,6 +21,8 @@ import android.widget.Toast;
  * create an instance of this fragment.
  */
 public class Help_and_Support_Frag extends Fragment {
+
+    Button req_for_blood, terms_and_policies, track_request, see_history, change_password, edit_profile;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -67,6 +72,169 @@ public class Help_and_Support_Frag extends Fragment {
 
         View v = inflater.inflate(R.layout.help_and__support_fragment_, container, false);
         v.setBackgroundColor(Color.WHITE);
+
+
+        req_for_blood = v.findViewById(R.id.q1);
+        terms_and_policies = v.findViewById(R.id.terms);
+        track_request = v.findViewById(R.id.q2);
+        see_history = v.findViewById(R.id.q3);
+        change_password = v.findViewById(R.id.q4);
+        edit_profile = v.findViewById(R.id.q5);
+
+        terms_and_policies.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setTitle("Terms and Policies!");
+                builder.setMessage("1-The Donor's age must Be Between 18 &amp; 65 \n \n 2-Location Must Be accessed " +
+                        "\n \n 3-Diseases must not be from the Following : Malaria , Hereditary blood diseases , Diabetics, Sever Anemia , Cancer , Blood Pressure , Heart Diseases " +
+                        "\n \n 4-Between every donation process must be 56 Days" );
+
+                // Setting OK Button
+                builder.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Write your code here to execute after dialog
+                        // closed
+//                        Toast.makeText(getActivity(),
+//                                "You accept our terms and policies", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                // Showing Alert Message
+                builder.show();
+            }
+        });
+
+        req_for_blood.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setTitle("How to make a Request");
+                builder.setMessage("1- Click on request button   " +
+                        "\n \n 2- Choose new request  " +
+                        "\n \n 3- Fill Request Form " +
+                        "\n \n 4- After inserting all data click finish  " );
+
+                // Setting OK Button
+                builder.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Write your code here to execute after dialog
+                        // closed
+//                        Toast.makeText(getActivity(),
+//                                "You accept our terms and policies", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                // Showing Alert Message
+                builder.show();
+            }
+        });
+
+        track_request.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setTitle("How to Track the Requests");
+                builder.setMessage("1-Click on request button   " +
+                        "\n \n 2- Choose Track request  " +
+                        "\n \n 3- Choose which Request you want to track " +
+                        "\n \n 4- New page will appear with your request's current status " );
+
+                // Setting OK Button
+                builder.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Write your code here to execute after dialog
+                        // closed
+//                        Toast.makeText(getActivity(),
+//                                "You accept our terms and policies", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                // Showing Alert Message
+                builder.show();
+            }
+        });
+
+        see_history.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setTitle("How to check your History");
+                builder.setMessage("1- Click on History button   " +
+                        "\n \n 2- List Of your  Requests Will Appear  " );
+
+                // Setting OK Button
+                builder.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Write your code here to execute after dialog
+                        // closed
+//                        Toast.makeText(getActivity(),
+//                                "You accept our terms and policies", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                // Showing Alert Message
+                builder.show();
+            }
+        });
+
+        change_password.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setTitle("How to change my password");
+                builder.setMessage("1- Click on Setting  button " +
+                        "\n \n 2- Choose privacy &amp; security  " +
+                        "\n \n 3- Choose change password " +
+                        "\n \n 4- After typing new password click on update password button" );
+
+                // Setting OK Button
+                builder.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Write your code here to execute after dialog
+                        // closed
+//                        Toast.makeText(getActivity(),
+//                                "You accept our terms and policies", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                // Showing Alert Message
+                builder.show();
+            }
+        });
+
+        edit_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setTitle("How to edit my profile information");
+                builder.setMessage("1- Click on Profile button  " +
+                        "\n \n 2- Choose privacy &amp; security  " +
+                        "\n \n 3- Tap on  Edit Profile " +
+                        "\n \n 4- After Editing press on Done " );
+
+                // Setting OK Button
+                builder.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Write your code here to execute after dialog
+                        // closed
+//                        Toast.makeText(getActivity(),
+//                                "You accept our terms and policies", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                // Showing Alert Message
+                builder.show();
+            }
+        });
+
+
 
 
         ImageView back_from_help_support = (ImageView) v.findViewById(R.id.back_from_help_support);

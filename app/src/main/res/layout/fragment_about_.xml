@@ -52,13 +52,14 @@ donor"
         android:textStyle="bold"/>
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="259dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="80dp"
         android:layout_marginTop="480dp"
-        android:text="Email: B-Donor@gmail.com"
+        android:text="Email:bdonor3@gmail.com"
         android:textColor="@color/main_red"
         android:textSize="20dp"
+        android:textIsSelectable="true"
         android:textStyle="bold" />
 
     <LinearLayout

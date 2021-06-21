@@ -133,6 +133,30 @@
             <ImageView
                 android:layout_width="45dp"
                 android:layout_height="45dp"
+                android:src="@drawable/ic_baseline_analytics_24" />
+
+            <Button
+                android:id="@+id/reports_btn"
+                android:layout_width="360dp"
+                android:layout_height="50dp"
+                android:backgroundTint="#D8D7D7"
+                android:padding="5dp"
+                android:text="Reports"
+                android:textAlignment="textStart"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="45dp"
+                android:layout_height="45dp"
                 android:src="@drawable/ic_baseline_exit_to_app_24" />
 
             <Button

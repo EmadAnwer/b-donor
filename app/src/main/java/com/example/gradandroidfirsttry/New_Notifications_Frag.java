@@ -36,7 +36,7 @@ import java.util.List;
 public class New_Notifications_Frag extends Fragment {
     ProgressBar progressBar3;
     Button button;
-    String bloodType,address,rh_type;
+    String bloodType,address,rh_type,hospital,phoneNo;
 
 
     TextView noRequestTextView;
@@ -69,6 +69,10 @@ public class New_Notifications_Frag extends Fragment {
         bloodType = pref.getString("blood_type","null");
         address = pref.getString("address","null");
         rh_type = pref.getString("rh_type","null");
+//        hospital = pref.getString("hospital", "null");
+//        phoneNo = pref.getString("phone", "null");
+
+
 
         progressBar3 = v.findViewById(R.id.progressBar3);
         noRequestTextView = v.findViewById(R.id.noRequestTextView);
