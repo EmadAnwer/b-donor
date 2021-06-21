@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -20,6 +22,7 @@ import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.backendless.Backendless;
@@ -51,6 +54,7 @@ public class Person_Registration extends AppCompatActivity implements AsyncCallb
 
     public static final String TAG = "TAG";
 
+    private TextView reg_terms_policies;
     private EditText first_name_edit, last_name_edit, phone_number_edit, username_edit, password_edit, email_edit, age_edit;
     private RadioButton radio_male_btn, radio_female_btn, radio_a_blood_type, radio_b_blood_type,
             radio_ab_blood_type, radio_o_blood_type, radio_pos_rh_type, radio_neg_rh_type;
@@ -75,8 +79,42 @@ public class Person_Registration extends AppCompatActivity implements AsyncCallb
         back_from_reg_to_welcome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Person_Registration.this, MainActivity.class);
-                startActivity(intent);
+
+                onBackPressed();
+//                Intent intent = new Intent(Person_Registration.this, MainActivity.class);
+//                startActivity(intent);
+            }
+        });
+
+
+
+        reg_terms_policies = findViewById(R.id.reg_terms_policies_btn);
+        reg_terms_policies.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(Person_Registration.this);
+                builder.setTitle("Terms and Policies!");
+                builder.setMessage("1-The Donor's age must Be Between 18 &amp; 65 \n \n 2-Location Must Be accessed " +
+                        "\n \n 3-Diseases must not be from the Following : Malaria , Hereditary blood diseases , Diabetics, Sever Anemia , Cancer , Blood Pressure , Heart Diseases " +
+                        "\n \n 4-Between every donation process must be 56 Days" );
+
+                // Setting Icon to Dialog
+//                builder.setIcon(R.drawable.tick);
+
+                // Setting OK Button
+                builder.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Write your code here to execute after dialog
+                        // closed
+                        Toast.makeText(getApplicationContext(),
+                                "You accept our terms and policies", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                // Showing Alert Message
+                builder.show();
+
             }
         });
 
