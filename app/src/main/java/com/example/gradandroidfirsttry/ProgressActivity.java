@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.backendless.Backendless;
 import com.backendless.BackendlessUser;
@@ -23,7 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProgressActivity extends AppCompatActivity {
-    ConstraintLayout confirmedConstraintLayout, acceptedConstraintLayout;
+    ConstraintLayout inProgressConstraintLayout,confirmedConstraintLayout, acceptedConstraintLayout;
     SharedPreferences pref;
     String requestID;
     DataQueryBuilder queryBuilder = DataQueryBuilder.create();
@@ -36,6 +37,8 @@ public class ProgressActivity extends AppCompatActivity {
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
+
+        inProgressConstraintLayout = findViewById(R.id.inProgressConstraintLayout);
         confirmedConstraintLayout= findViewById(R.id.confirmedConstraintLayout);
         acceptedConstraintLayout= findViewById(R.id.acceptedConstraintLayout);
 
@@ -63,13 +66,15 @@ public class ProgressActivity extends AppCompatActivity {
             @Override
             public void handleResponse(Integer response) {
                 if(response != 0)
+                    inProgressConstraintLayout.setVisibility(View.VISIBLE);
                     confirmedConstraintLayout.setVisibility(View.VISIBLE);
-
 
             }
 
             @Override
             public void handleFault(BackendlessFault fault) {
+
+                Toast.makeText(ProgressActivity.this, "error"+fault.toString() ,Toast.LENGTH_LONG).show();
 
             }
         });

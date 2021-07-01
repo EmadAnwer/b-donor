@@ -44,7 +44,8 @@
         android:layout_marginLeft="110dp"
         android:hint="Enter first Name"
         android:inputType="text"
-        android:textColorHint="@color/light_gray" />
+        android:textColorHint="@color/light_gray"
+        android:text="Noreen"/>
 
 </LinearLayout>
 
@@ -75,7 +76,8 @@
         android:layout_marginLeft="112dp"
         android:hint="Enter Last Name"
         android:inputType="text"
-        android:textColorHint="@color/light_gray" />
+        android:textColorHint="@color/light_gray"
+        android:text="Hany"/>
 
 </LinearLayout>
 
@@ -106,7 +108,8 @@
         android:layout_marginLeft="83dp"
         android:hint="Enter Phone Number"
         android:inputType="textPhonetic"
-        android:textColorHint="@color/light_gray" />
+        android:textColorHint="@color/light_gray"
+        android:text="011234569877"/>
 </LinearLayout>
 
 <LinearLayout
@@ -136,7 +139,8 @@
         android:layout_marginLeft="108dp"
         android:hint="Set your User Name"
         android:inputType="text"
-        android:textColorHint="@color/light_gray" />
+        android:textColorHint="@color/light_gray"
+        android:text="noreen_user"/>
 
 </LinearLayout>
 
@@ -232,7 +236,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="159dp"
             android:hint="Enter your Age"
-            android:inputType="number" />
+            android:inputType="number"
+            android:text="22"/>
 
 
     </LinearLayout>
@@ -263,7 +268,8 @@
             android:layout_marginLeft="148dp"
             android:hint="Enter your Email"
             android:inputType="textEmailAddress"
-            android:textColorHint="@color/light_gray" />
+            android:textColorHint="@color/light_gray"
+            android:text="abuelsoudnor@gmail.com"/>
 
     </LinearLayout>
     <LinearLayout
