@@ -17,7 +17,10 @@ import com.backendless.async.callback.AsyncCallback;
 import com.backendless.exceptions.BackendlessFault;
 import com.backendless.persistence.DataQueryBuilder;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class Track_request_items extends AppCompatActivity {
@@ -40,11 +43,14 @@ public class Track_request_items extends AppCompatActivity {
             getSupportActionBar().hide();
         }
 
+        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+        Date date = new Date();
+
 
         progressBar7 = findViewById(R.id.progressBar7);
         noRequestTextView7 = findViewById(R.id.noRequestTextView7);
         queryBuilder = DataQueryBuilder.create();
-        queryBuilder.setWhereClause("ownerId ='"+ Backendless.UserService.loggedInUser()+"'");
+        queryBuilder.setWhereClause("ownerId ='"+ Backendless.UserService.loggedInUser()+"'"+"and deleted = false and (accepted = false or  (accepted = true and (updated+1 > '"+formatter.format(date)+"')))");
         //setting historyRecyclerView
         trackRequestRecyclerView = findViewById(R.id.trackRequestRecyclerView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);

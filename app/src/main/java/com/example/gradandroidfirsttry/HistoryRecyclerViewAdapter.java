@@ -42,7 +42,11 @@ public class HistoryRecyclerViewAdapter extends RecyclerView.Adapter<HistoryRecy
             holder.statusTextView.setTextColor(Color.GREEN);
         }
         else {
-            holder.statusTextView.setText("pending");
+            if(historyList.get(position).getDeleted())
+                holder.statusTextView.setText("Deleted");
+            else
+                holder.statusTextView.setText("pending");
+
             holder.statusTextView.setTextColor(Color.RED);
 
         }

@@ -9,6 +9,7 @@ import java.util.Date;
 
 public class PatientRequest {
     private Boolean accepted;
+    private Boolean deleted;
     private String picture_url;
     private Integer patientAge;
     private String gender;
@@ -39,6 +40,17 @@ public class PatientRequest {
     {
         this.accepted = accepted;
     }
+
+    public Boolean getDeleted()
+    {
+        return deleted;
+    }
+    public void setDeleted( Boolean deleted )
+    {
+        this.deleted = deleted;
+    }
+
+
     public void setPicture_url(String picture_url )
     {
         this.picture_url = picture_url;

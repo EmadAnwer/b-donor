@@ -14,6 +14,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.backendless.Backendless;
+import com.backendless.async.callback.AsyncCallback;
+import com.backendless.exceptions.BackendlessFault;
+
 import java.util.List;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -47,6 +51,8 @@ public class ProgressRecyclerViewAdapter extends RecyclerView.Adapter<ProgressRe
         holder.pLocationTextView.setText(progressRequestsList.get(position).getCity());
         holder.nTimeTextView.setText(progressRequestsList.get(position).getCreated().toString());
         holder.trackButton.setOnClickListener(this);
+        holder.deleteTrackButton.setOnClickListener(this);
+        holder.deleteTrackButton.setTag(position);
         holder.trackButton.setTag(progressRequestsList.get(position));
 
     }
@@ -58,31 +64,57 @@ public class ProgressRecyclerViewAdapter extends RecyclerView.Adapter<ProgressRe
 
     @Override
     public void onClick(View v) {
-        PatientRequest p = (PatientRequest) v.getTag();
-        // pass governorate name and governorate cover within SharedPreferences
-        pref = context.getSharedPreferences("requestProgress", MODE_PRIVATE);
-        @SuppressLint("CommitPrefEdits") SharedPreferences.Editor editor = pref.edit();
+        int id = v.getId();
 
-        if(p.getAccepted())
-            editor.putString("requestID", "Accepted");
-        else
-            editor.putString("requestID", p.getObjectId());
+        if (id == R.id.trackButton)
+        {
+            PatientRequest p = (PatientRequest) v.getTag();
+            // pass governorate name and governorate cover within SharedPreferences
+            pref = context.getSharedPreferences("requestProgress", MODE_PRIVATE);
+            @SuppressLint("CommitPrefEdits") SharedPreferences.Editor editor = pref.edit();
 
-        editor.putString("city", p.getCity());
-        editor.putString("bloodType", p.getBloodType());
-        editor.putString("RH", p.getRHType());
-        editor.apply();
+            if(p.getAccepted())
+                editor.putString("requestID", "Accepted");
+            else
+                editor.putString("requestID", p.getObjectId());
 
-        // intent to PlacesActivity
-        Intent intent = new Intent(context, ProgressActivity.class);
-        context.startActivity(intent);
-        intent = null;
+            editor.putString("city", p.getCity());
+            editor.putString("bloodType", p.getBloodType());
+            editor.putString("RH", p.getRHType());
+            editor.apply();
+
+            // intent to PlacesActivity
+            Intent intent = new Intent(context, ProgressActivity.class);
+            context.startActivity(intent);
+            intent = null;
+        }
+        else if(id == R.id.deleteTrackButton)
+        {
+            int position = (int) v.getTag();
+            progressRequestsList.get(position).setDeleted(true);
+            Backendless.Data.of(PatientRequest.class).save(progressRequestsList.get(position), new AsyncCallback<PatientRequest>() {
+                @Override
+                public void handleResponse(PatientRequest response) {
+
+                }
+
+                @Override
+                public void handleFault(BackendlessFault fault) {
+
+                }
+            });
+
+            progressRequestsList.remove(position);
+            notifyDataSetChanged();
+
+        }
+
     }
 
 
     public static class ViewHolder  extends RecyclerView.ViewHolder{
         TextView pPatientNameTextView,pQuantityTextView,pBloodGroupTextView,pRHTypeTextView,pLocationTextView,nTimeTextView;
-        Button trackButton;
+        Button trackButton,deleteTrackButton;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             pPatientNameTextView =itemView.findViewById(R.id.pPatientNameTextView);
@@ -92,6 +124,7 @@ public class ProgressRecyclerViewAdapter extends RecyclerView.Adapter<ProgressRe
             pLocationTextView =itemView.findViewById(R.id.pLocationTextView);
             nTimeTextView =itemView.findViewById(R.id.nTimeTextView);
             trackButton =itemView.findViewById(R.id.trackButton);
+            deleteTrackButton  =itemView.findViewById(R.id.deleteTrackButton);
         }
     }
 }
