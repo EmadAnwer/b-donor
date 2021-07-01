@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Backendless.initApp(this, "9AE292D7-DE97-4E82-FF31-5B2D7A0ACB00", "BF714A14-8279-4903-A2F9-407F58AE2D0F");
+        Backendless.initApp(this, "4C0A565C-FA08-8679-FF8C-87FF43138500", "E4CAB4A8-B10A-4960-83B9-4AC1F8E3602A");
 
 
 
