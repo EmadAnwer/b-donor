@@ -281,30 +281,23 @@ public class Patient_Request extends AppCompatActivity {
             return;
         }
 
+        String url = "https://cdn.getyourguide.com/img/location/540dc894dff37-m1409674485.jpg/92.jpg";
 
-        patientRequest.setName(name);
-        patientRequest.setPhone(phone);
-        patientRequest.setBloodType(blood_type);
-        patientRequest.setRHType(rh_type);
-        patientRequest.setPatientAge(age);
-        patientRequest.setGender(gender);
-        patientRequest.setQuantity(needed_quantity);
-        patientRequest.setCity(city);
-        patientRequest.setHospital(hospital);
-        patientRequest.setPicture_url("https://cdn.getyourguide.com/img/location/540dc894dff37-m1409674485.jpg/92.jpg");
+        List<PatientRequest> patientRequests = new ArrayList<>();
 
-        Backendless.Data.of(PatientRequest.class).save(patientRequest, new AsyncCallback<PatientRequest>() {
+        for (int i = 0; i < needed_quantity; i++) {
+            patientRequests.add(new PatientRequest(url, age, gender, phone, hospital, blood_type, rh_type, name, city));
+
+        }
+        Backendless.Data.of(PatientRequest.class).create(patientRequests, new AsyncCallback<List<String>>() {
             @Override
-            public void handleResponse(PatientRequest response) {
-
+            public void handleResponse(List<String> response) {
                 Toast.makeText(Patient_Request.this, "Request Done!", Toast.LENGTH_LONG).show();
                 onBackPressed();
-
             }
 
             @Override
             public void handleFault(BackendlessFault fault) {
-
                 Toast.makeText(Patient_Request.this, "Error!", Toast.LENGTH_LONG).show();
             }
         });

@@ -21,12 +21,23 @@ public class PatientRequest {
     private String ownerId;
     private Date created;
     private String RHType;
-    private Integer quantity;
     private String name;
     private String city;
     public String getPicture_url()
     {
         return picture_url;
+    }
+
+    public PatientRequest(String picture_url, Integer patientAge, String gender, String phone, String hospital, String bloodType, String RHType, String name, String city) {
+        this.picture_url = picture_url;
+        this.patientAge = patientAge;
+        this.gender = gender;
+        this.phone = phone;
+        this.hospital = hospital;
+        this.bloodType = bloodType;
+        this.RHType = RHType;
+        this.name = name;
+        this.city = city;
     }
 
     public PatientRequest() {
@@ -138,16 +149,6 @@ public class PatientRequest {
     public void setRHType( String RHType )
     {
         this.RHType = RHType;
-    }
-
-    public Integer getQuantity()
-    {
-        return quantity;
-    }
-
-    public void setQuantity( Integer quantity )
-    {
-        this.quantity = quantity;
     }
 
     public String getName()

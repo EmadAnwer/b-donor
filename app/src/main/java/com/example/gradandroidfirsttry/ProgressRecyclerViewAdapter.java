@@ -45,7 +45,6 @@ public class ProgressRecyclerViewAdapter extends RecyclerView.Adapter<ProgressRe
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         holder.pPatientNameTextView.setText(progressRequestsList.get(position).getName());
-        holder.pQuantityTextView.setText(progressRequestsList.get(position).getQuantity().toString());
         holder.pBloodGroupTextView.setText(progressRequestsList.get(position).getBloodType());
         holder.pRHTypeTextView.setText(progressRequestsList.get(position).getRHType());
         holder.pLocationTextView.setText(progressRequestsList.get(position).getCity());
@@ -113,12 +112,11 @@ public class ProgressRecyclerViewAdapter extends RecyclerView.Adapter<ProgressRe
 
 
     public static class ViewHolder  extends RecyclerView.ViewHolder{
-        TextView pPatientNameTextView,pQuantityTextView,pBloodGroupTextView,pRHTypeTextView,pLocationTextView,nTimeTextView;
+        TextView pPatientNameTextView,pBloodGroupTextView,pRHTypeTextView,pLocationTextView,nTimeTextView;
         Button trackButton,deleteTrackButton;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             pPatientNameTextView =itemView.findViewById(R.id.pPatientNameTextView);
-            pQuantityTextView =itemView.findViewById(R.id.pQuantityTextView);
             pBloodGroupTextView =itemView.findViewById(R.id.pBloodGroupTextView);
             pRHTypeTextView =itemView.findViewById(R.id.pRHTypeTextView);
             pLocationTextView =itemView.findViewById(R.id.pLocationTextView);

@@ -1,5 +1,6 @@
 package com.example.gradandroidfirsttry;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
@@ -19,6 +20,8 @@ import com.backendless.async.callback.AsyncCallback;
 import com.backendless.exceptions.BackendlessFault;
 import com.backendless.messaging.MessageStatus;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -27,10 +30,14 @@ public class NotificationRecyclerViewAdapter extends RecyclerView.Adapter<Notifi
     List<PatientRequest> notificationList;
     Context context;
     SharedPreferences pref;
-
-    public NotificationRecyclerViewAdapter(List<PatientRequest> notificationList, Context context) {
+    TextView noRequestTextView;
+    RecyclerView notificationRecyclerView;
+    public NotificationRecyclerViewAdapter(List<PatientRequest> notificationList, Context context,TextView noRequestTextView,RecyclerView notificationRecyclerView) {
         this.notificationList = notificationList;
         this.context = context;
+        this.noRequestTextView = noRequestTextView;
+        this.notificationRecyclerView = notificationRecyclerView;
+
     }
 
 
@@ -46,7 +53,6 @@ public class NotificationRecyclerViewAdapter extends RecyclerView.Adapter<Notifi
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         holder.patientNameTextView.setText(notificationList.get(position).getName());
-        holder.quantityTextView.setText(notificationList.get(position).getQuantity().toString());
         holder.bloodGroupTextView.setText(notificationList.get(position).getBloodType());
         holder.rhTypeTextView.setText(notificationList.get(position).getRHType());
         holder.locationTextView.setText(notificationList.get(position).getCity());
@@ -69,28 +75,55 @@ public class NotificationRecyclerViewAdapter extends RecyclerView.Adapter<Notifi
         if (v.getId() == R.id.acceptImageView)
         {
             int p = (int) v.getTag();
+            SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+            Date date = new Date();
+            String lastDonationDate = formatter.format(date);
+
             PatientRequest patientRequest = new PatientRequest();
             patientRequest.setObjectId(notificationList.get(p).getObjectId());
             patientRequest.setAccepted(true);
-            notificationList.remove(p);
-            notifyDataSetChanged();
+            notificationRecyclerView.setVisibility(View.INVISIBLE);
+            noRequestTextView.setText("Thank you for your donation, new requests will appear to you after 56 days from the day of your donation");
+            noRequestTextView.setVisibility(View.VISIBLE);
 
             Backendless.Data.save(patientRequest, new AsyncCallback<PatientRequest>() {
                 @Override
                 public void handleResponse(PatientRequest response) {
+                    pref = context.getSharedPreferences("userData", MODE_PRIVATE);
+                    String name = pref.getString("first_name","null");
+                    String phone = pref.getString("phone","null");
+                    AcceptedRequests acceptedRequest = new AcceptedRequests();
+                    acceptedRequest.setDonorName(name);
+                    acceptedRequest.setDonorPhone(phone);
+                    acceptedRequest.setPatientName(notificationList.get(p).getName());
+                    acceptedRequest.setPatientRHType(notificationList.get(p).getRHType());
+                    acceptedRequest.setPatientBloodType(notificationList.get(p).getBloodType());
+                    acceptedRequest.setPatientHospital(notificationList.get(p).getHospital());
+                    acceptedRequest.setPatientPhone(notificationList.get(p).getPhone());
+                    acceptedRequest.setCity(notificationList.get(p).getCity());
 
+
+
+                    Backendless.Data.of(AcceptedRequests.class).save(acceptedRequest, new AsyncCallback<AcceptedRequests>() {
+                        @Override
+                        public void handleResponse(AcceptedRequests response) {
+
+                        }
+
+                        @Override
+                        public void handleFault(BackendlessFault fault) {
+
+                        }
+                    });
                     Backendless.Data.of(BackendlessUser.class).findById(response.getOwnerId(), new AsyncCallback<BackendlessUser>() {
                         @Override
                         public void handleResponse(BackendlessUser response) {
-
-                            pref = context.getSharedPreferences("userData", MODE_PRIVATE);
-                            String name = pref.getString("first_name","null");
-                            String phone = pref.getString("phone","null");
                             Backendless.Messaging.sendTextEmail("Your request has been accepted",
                                     "Your request has been accepted. \n\nPlease contact "+name +".\nThe contact number is "+phone, response.getEmail(), new AsyncCallback<MessageStatus>() {
                                         @Override
                                         public void handleResponse(MessageStatus response) {
                                             Log.i("Email", "response: "+response.toString());
+                                            notificationList.clear();
                                         }
 
                                         @Override
@@ -98,6 +131,36 @@ public class NotificationRecyclerViewAdapter extends RecyclerView.Adapter<Notifi
                                             Log.i("Email", "handleFault: "+fault.toString());
                                         }
                                     });
+                        }
+
+                        @Override
+                        public void handleFault(BackendlessFault fault) {
+
+                        }
+                    });
+
+                    Backendless.Data.of(BackendlessUser.class).findById(Backendless.UserService.loggedInUser(), new AsyncCallback<BackendlessUser>() {
+                        @Override
+                        public void handleResponse(BackendlessUser response) {
+
+
+                            response.setProperty("lastDonationDate",date);
+                            Backendless.Data.of(BackendlessUser.class).save(response, new AsyncCallback<BackendlessUser>() {
+                                @Override
+                                public void handleResponse(BackendlessUser response) {
+                                    pref = context.getSharedPreferences("userData", MODE_PRIVATE);
+                                    @SuppressLint("CommitPrefEdits") SharedPreferences.Editor editor = pref.edit();
+                                    editor.putString("lastDonationDate", lastDonationDate);
+                                    editor.apply();
+
+                                }
+
+                                @Override
+                                public void handleFault(BackendlessFault fault) {
+
+                                }
+                            });
+
                         }
 
                         @Override
@@ -117,12 +180,16 @@ public class NotificationRecyclerViewAdapter extends RecyclerView.Adapter<Notifi
             });
 
 
+
+
         }
         else if (v.getId() == R.id.nRejectImageView)
         {
             int p = (int) v.getTag();
 
             notificationList.remove(p);
+            if(notificationList.size() == 0)
+                noRequestTextView.setVisibility(View.VISIBLE);
             notifyDataSetChanged();
         }
     }

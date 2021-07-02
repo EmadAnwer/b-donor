@@ -27,16 +27,18 @@ import com.backendless.async.callback.AsyncCallback;
 import com.backendless.exceptions.BackendlessFault;
 import com.backendless.persistence.DataQueryBuilder;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
+import java.util.concurrent.TimeUnit;
 
 
 public class New_Notifications_Frag extends Fragment {
     ProgressBar progressBar3;
     Button button;
-    String bloodType,address,rh_type,hospital,phoneNo;
+    String bloodType,address,rh_type,hospital,phoneNo,lastDonationDate;
 
 
     TextView noRequestTextView;
@@ -46,7 +48,7 @@ public class New_Notifications_Frag extends Fragment {
     ArrayList<PatientRequest> notificationList = new ArrayList<>();
     SharedPreferences pref;
 
-
+    long days;
     public New_Notifications_Frag() {
         // Required empty public constructor
     }
@@ -65,23 +67,53 @@ public class New_Notifications_Frag extends Fragment {
 
         // Inflate the layout for this fragment
        View v = inflater.inflate(R.layout.new_fragment_notifications, container, false);
+        progressBar3 = v.findViewById(R.id.progressBar3);
+        noRequestTextView = v.findViewById(R.id.noRequestTextView);
+
         pref = this.getActivity().getSharedPreferences("userData", Context.MODE_PRIVATE);
         bloodType = pref.getString("blood_type","null");
         address = pref.getString("address","null");
         rh_type = pref.getString("rh_type","null");
+        lastDonationDate = pref.getString("lastDonationDate","null");
+
+        if(!lastDonationDate.equals("null"))
+        {
+            SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+            try {
+                Date DonationDate = formatter.parse(lastDonationDate);
+                Date today =new Date();
+
+                long diffInMillies = Math.abs(today.getTime() - DonationDate.getTime());
+                days = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
+
+
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+            if(days < 56)
+            {
+                progressBar3.setVisibility(View.INVISIBLE);
+                noRequestTextView.setText("you made a donation on "+lastDonationDate+"\n" +
+                        "New requests will appear to you after "+(56-days)+" days");
+
+                noRequestTextView.setVisibility(View.VISIBLE);
+                return v;
+            }
+
+        }
 //        hospital = pref.getString("hospital", "null");
 //        phoneNo = pref.getString("phone", "null");
 
 
 
-        progressBar3 = v.findViewById(R.id.progressBar3);
-        noRequestTextView = v.findViewById(R.id.noRequestTextView);
+
         queryBuilder = DataQueryBuilder.create();
         //setting governorateRecyclerView
         notificationRecyclerView = v.findViewById(R.id.notificationRecyclerView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(v.getContext(),LinearLayoutManager.VERTICAL,false);
         notificationRecyclerView.setLayoutManager(layoutManager);
-        adapter = new NotificationRecyclerViewAdapter(notificationList,v.getContext());
+        adapter = new NotificationRecyclerViewAdapter(notificationList,v.getContext(),noRequestTextView,notificationRecyclerView);
         notificationRecyclerView.setAdapter(adapter);
         getUserNotifications();
 

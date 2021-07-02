@@ -30,6 +30,8 @@ import com.backendless.exceptions.BackendlessFault;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
+import java.text.SimpleDateFormat;
+
 
 public class Login_page extends AppCompatActivity implements AsyncCallback<BackendlessUser> {
 
@@ -145,6 +147,19 @@ public class Login_page extends AppCompatActivity implements AsyncCallback<Backe
         editor.putString("gender", response.getProperty("gender").toString());
         editor.putString("blood_type", response.getProperty("blood_type").toString());
         editor.putString("rh_type", response.getProperty("rh_type").toString());
+
+
+
+        if(response.getProperty("lastDonationDate") != null)
+        {
+
+            SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+            String lastDonationDate = formatter.format(response.getProperty("lastDonationDate"));
+            editor.putString("lastDonationDate", lastDonationDate);
+        }
+        else
+            editor.putString("lastDonationDate", "null");
+
         editor.apply();
 
 

@@ -29,35 +29,24 @@
         app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
     <TextView
-        android:id="@+id/pQuantityTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="Quantity"
-        android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/pPatientNameTextView" />
-
-    <TextView
         android:id="@+id/pBloodGroupTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="1dp"
         android:text="Blood Group"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/pQuantityTextView"
-        app:layout_constraintTop_toBottomOf="@+id/pQuantityTextView" />
+        app:layout_constraintStart_toStartOf="@+id/pPatientNameTextView"
+        app:layout_constraintTop_toBottomOf="@+id/pPatientNameTextView" />
 
     <TextView
         android:id="@+id/pRHTypeTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="3dp"
-        android:layout_marginTop="1dp"
+        android:layout_marginStart="16dp"
         android:text="RH Type"
         android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/pBloodGroupTextView"
-        app:layout_constraintTop_toBottomOf="@+id/pQuantityTextView" />
+        app:layout_constraintBottom_toBottomOf="@+id/pLocationTextView"
+        app:layout_constraintStart_toEndOf="@+id/pLocationTextView"
+        app:layout_constraintTop_toBottomOf="@+id/pBloodGroupTextView" />
 
     <ImageView
         android:id="@+id/imageView2"
