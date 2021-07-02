@@ -41,12 +41,13 @@
         android:id="@+id/pRHTypeTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="12dp"
         android:text="RH Type"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/pLocationTextView"
-        app:layout_constraintStart_toEndOf="@+id/pLocationTextView"
-        app:layout_constraintTop_toBottomOf="@+id/pBloodGroupTextView" />
+        app:layout_constraintStart_toEndOf="@+id/pBloodGroupTextView"
+        app:layout_constraintTop_toBottomOf="@+id/pPatientNameTextView"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -86,13 +87,25 @@
         app:layout_constraintStart_toStartOf="@+id/pBloodGroupTextView"
         app:layout_constraintTop_toBottomOf="@+id/pBloodGroupTextView" />
 
+
+    <TextView
+        android:id="@+id/pHospitalTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hospital"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/pLocationTextView"
+        app:layout_constraintTop_toBottomOf="@+id/pLocationTextView" />
+
+
     <Button
         android:id="@+id/trackButton"
         android:layout_width="80sp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="8dp"
         android:text="Track"
         android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toBottomOf="@+id/nTimeTextView" />
 
@@ -100,11 +113,13 @@
         android:id="@+id/deleteTrackButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:text="delete"
+        app:layout_constraintBottom_toBottomOf="@+id/trackButton"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.655"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/trackButton" />
+        app:layout_constraintTop_toBottomOf="@+id/pHospitalTextView"
+        app:layout_constraintVertical_bias="1.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

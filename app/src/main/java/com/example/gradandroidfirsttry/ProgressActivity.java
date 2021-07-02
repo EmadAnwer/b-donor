@@ -28,7 +28,7 @@ public class ProgressActivity extends AppCompatActivity {
     SharedPreferences pref;
     String requestID;
     DataQueryBuilder queryBuilder = DataQueryBuilder.create();
-    String bloodType,address,rh_type;
+    String bloodType,address,rh_type,hospital;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +46,7 @@ public class ProgressActivity extends AppCompatActivity {
         requestID = pref.getString("requestID","null");
         bloodType = pref.getString("bloodType","null");
         address = pref.getString("city","null");
+        hospital = pref.getString("hospital","null");
         rh_type = pref.getString("RH","null");
 
         if(requestID.equals("Accepted"))

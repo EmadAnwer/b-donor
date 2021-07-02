@@ -289,6 +289,6 @@ public class Person_Registration extends AppCompatActivity implements AsyncCallb
     @Override
     public void handleFault(BackendlessFault fault) {
         Log.i(TAG, "handleFault: "+fault.toString());
-        Toast.makeText(this, "Registration Failed!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Registration Failed!"+fault.toString(), Toast.LENGTH_SHORT).show();
     }
 }

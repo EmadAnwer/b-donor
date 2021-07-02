@@ -48,6 +48,7 @@ public class ProgressRecyclerViewAdapter extends RecyclerView.Adapter<ProgressRe
         holder.pBloodGroupTextView.setText(progressRequestsList.get(position).getBloodType());
         holder.pRHTypeTextView.setText(progressRequestsList.get(position).getRHType());
         holder.pLocationTextView.setText(progressRequestsList.get(position).getCity());
+        holder.pHospitalTextView.setText(progressRequestsList.get(position).getHospital());
         holder.nTimeTextView.setText(progressRequestsList.get(position).getCreated().toString());
         holder.trackButton.setOnClickListener(this);
         holder.deleteTrackButton.setOnClickListener(this);
@@ -78,6 +79,7 @@ public class ProgressRecyclerViewAdapter extends RecyclerView.Adapter<ProgressRe
                 editor.putString("requestID", p.getObjectId());
 
             editor.putString("city", p.getCity());
+            editor.putString("hospital", p.getHospital());
             editor.putString("bloodType", p.getBloodType());
             editor.putString("RH", p.getRHType());
             editor.apply();
@@ -112,7 +114,7 @@ public class ProgressRecyclerViewAdapter extends RecyclerView.Adapter<ProgressRe
 
 
     public static class ViewHolder  extends RecyclerView.ViewHolder{
-        TextView pPatientNameTextView,pBloodGroupTextView,pRHTypeTextView,pLocationTextView,nTimeTextView;
+        TextView pPatientNameTextView,pBloodGroupTextView,pRHTypeTextView,pLocationTextView,pHospitalTextView,nTimeTextView;
         Button trackButton,deleteTrackButton;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -120,6 +122,7 @@ public class ProgressRecyclerViewAdapter extends RecyclerView.Adapter<ProgressRe
             pBloodGroupTextView =itemView.findViewById(R.id.pBloodGroupTextView);
             pRHTypeTextView =itemView.findViewById(R.id.pRHTypeTextView);
             pLocationTextView =itemView.findViewById(R.id.pLocationTextView);
+            pHospitalTextView =itemView.findViewById(R.id.pHospitalTextView);
             nTimeTextView =itemView.findViewById(R.id.nTimeTextView);
             trackButton =itemView.findViewById(R.id.trackButton);
             deleteTrackButton  =itemView.findViewById(R.id.deleteTrackButton);

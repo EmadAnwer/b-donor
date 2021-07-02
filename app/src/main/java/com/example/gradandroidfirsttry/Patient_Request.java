@@ -44,8 +44,8 @@ public class Patient_Request extends AppCompatActivity {
     ArrayList<String> arrayList_city;
     ArrayAdapter<String> arrayAdapter_city;
 
-    ArrayList<String> arrayList_mokkattam, arrayList_fifthSettelment,
-            arrayList_madinetNasr;
+    ArrayList<String> arrayList_chooseTheHospital,arrayList_mokkattam, arrayList_fifthSettelment,
+            arrayList_madinetNasr,  arrayList_maaadi;
     ArrayAdapter<String> arrayAdapter_hospital;
 
 
@@ -104,9 +104,11 @@ public class Patient_Request extends AppCompatActivity {
         hospital_spinner = (Spinner)findViewById(R.id.set_req_hospital);
 
         arrayList_city = new ArrayList<>();
+        arrayList_city.add("Choose Your City");
         arrayList_city.add("Mokkattam");
         arrayList_city.add("Fifth Settlement");
         arrayList_city.add("Madinet Nasr");
+        arrayList_city.add("Maaadi");
 
 
         arrayAdapter_city = new ArrayAdapter<>(getApplication(),
@@ -114,7 +116,11 @@ public class Patient_Request extends AppCompatActivity {
         city_spinner.setAdapter(arrayAdapter_city);
 
         //======== hospital spinner process starts =========
+        arrayList_chooseTheHospital = new ArrayList<>();
+        arrayList_chooseTheHospital.add("Select the city first");
+
         arrayList_mokkattam = new ArrayList<>();
+        arrayList_mokkattam.add("Choose the hospital");
         arrayList_mokkattam.add("9th Street Clinics");
         arrayList_mokkattam.add("Tabarak Childern's Hospital");
         arrayList_mokkattam.add("El-Masry Specialized Hospital");
@@ -122,6 +128,7 @@ public class Patient_Request extends AppCompatActivity {
 
 
         arrayList_fifthSettelment = new ArrayList<>();
+        arrayList_fifthSettelment.add("Choose the hospital");
         arrayList_fifthSettelment.add("Air Force Specialized Hospital");
         arrayList_fifthSettelment.add("El-Karma Hospital");
         arrayList_fifthSettelment.add("Town Hospital");
@@ -129,10 +136,19 @@ public class Patient_Request extends AppCompatActivity {
 
 
         arrayList_madinetNasr = new ArrayList<>();
+        arrayList_madinetNasr.add("Choose the hospital");
         arrayList_madinetNasr.add("Nasr city Hospital");
         arrayList_madinetNasr.add("Seha Al Akkad Hospital");
         arrayList_madinetNasr.add("Adam Hospital clinics");
         arrayList_madinetNasr.add("Dar El-Fouad Hospital");
+
+        arrayList_maaadi = new ArrayList<>();
+        arrayList_maaadi.add("Choose the hospital");
+        arrayList_maaadi.add("Maadi Military Hospital");
+        arrayList_maaadi.add("El Rayan Hospital");
+        arrayList_maaadi.add("El Farouq Hospital");
+        arrayList_maaadi.add("DR. Alaa Ezzat Hospital");
+
 
 
 
@@ -142,21 +158,34 @@ public class Patient_Request extends AppCompatActivity {
 
                 if(position==0)
                 {
-                    arrayAdapter_hospital = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, arrayList_mokkattam);
+                    arrayAdapter_hospital = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, arrayList_chooseTheHospital);
 
                 }
 
                 if (position==1)
                 {
-                    arrayAdapter_hospital = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, arrayList_fifthSettelment);
+                    arrayAdapter_hospital = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, arrayList_mokkattam);
 
                 }
 
                 if (position==2)
                 {
+                    arrayAdapter_hospital = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, arrayList_fifthSettelment);
+
+                }
+
+                if (position==3)
+                {
                     arrayAdapter_hospital = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, arrayList_madinetNasr);
 
                 }
+
+                if (position==4)
+                {
+                    arrayAdapter_hospital = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, arrayList_maaadi);
+
+                }
+
 
                 hospital_spinner.setAdapter(arrayAdapter_hospital);
 
