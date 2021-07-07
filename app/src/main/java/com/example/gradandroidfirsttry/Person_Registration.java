@@ -57,10 +57,12 @@ public class Person_Registration extends AppCompatActivity implements AsyncCallb
     private TextView reg_terms_policies;
     private EditText first_name_edit, last_name_edit, phone_number_edit, username_edit, password_edit, email_edit, age_edit;
     private RadioButton radio_male_btn, radio_female_btn, radio_a_blood_type, radio_b_blood_type,
-            radio_ab_blood_type, radio_o_blood_type, radio_pos_rh_type, radio_neg_rh_type;
-    private RadioGroup radio_group_blood_type_btn, radio_group_rh_type_btn, radio_group_last_donation_time;
+            radio_ab_blood_type, radio_o_blood_type, radio_pos_rh_type, radio_neg_rh_type, reg_terms_policies_radioButton;
+    private RadioGroup radio_group_blood_type_btn, radio_group_rh_type_btn, radio_group_last_donation_time,
+            terms_polices_radioGroup;
     private Spinner address_spinner;
     private CheckBox reg_terms_policies_checkbox;
+
 
     ProgressBar progressBar;
 
@@ -135,9 +137,13 @@ public class Person_Registration extends AppCompatActivity implements AsyncCallb
         radio_group_rh_type_btn = findViewById(R.id.rh_type_btn);
         radio_group_last_donation_time = findViewById(R.id.last_donation_time);
 
+        terms_polices_radioGroup = findViewById(R.id.terms_polices_radioGroup);
+        reg_terms_policies_radioButton = findViewById(R.id.reg_terms_policies_radioButton);
 
-        reg_terms_policies_checkbox = findViewById(R.id.reg_terms_policies_checkbox);
-        reg_terms_policies_checkbox.setChecked(true);
+
+        //In Case the terms is a checkbox
+//        reg_terms_policies_checkbox = findViewById(R.id.reg_terms_policies_checkbox);
+//        reg_terms_policies_checkbox.setChecked(true);
 
 
         address_spinner = findViewById(R.id.address_spinner);
@@ -147,9 +153,9 @@ public class Person_Registration extends AppCompatActivity implements AsyncCallb
         Spinner address_spinner = findViewById(R.id.address_spinner);
 
         //create a list of items for the spinner.
-        String[] address_items = new String[]{ "Select your City", "Mokkattam", "Masr El-Gededa", "Rehab",
-                "Fifth settlement ", "Madinet Nasr", "Madinity","Elshrouk", "El-Obour",
-                "Maaadi", "Masr El-Adema","West El-Balad", "Sheraton", "Shobra", "Gesr El-Swis", "Elnozha", "El-Zamalk" };
+        String[] address_items = new String[]{ "Select your City", "Mokkattam", "Maaadi","Fifth settlement ",
+                "Madinet Nasr","Gesr El-Swis", "El-Abbasaya", "Masr El-Gededa", "Rehab", "Madinity","Elshrouk", "El-Obour",
+                 "Masr El-Adema","West El-Balad", "Sheraton", "Shobra", "Elnozha", "El-Zamalk" };
 
         //create an adapter to describe how the items are displayed, adapters are used in several places in android.
         //There are multiple variations of this, but this is the basic variant.
@@ -202,6 +208,7 @@ public class Person_Registration extends AppCompatActivity implements AsyncCallb
         int blood_type_group = radio_group_blood_type_btn.getCheckedRadioButtonId();
         int rh_type_group = radio_group_rh_type_btn.getCheckedRadioButtonId();
         int last_donation_time = radio_group_last_donation_time.getCheckedRadioButtonId();
+        int terms_group = terms_polices_radioGroup.getCheckedRadioButtonId();
 
         if (TextUtils.isEmpty(email)) {
             email_edit.setError("Email is Required.");
@@ -229,12 +236,12 @@ public class Person_Registration extends AppCompatActivity implements AsyncCallb
         }
 
         if (TextUtils.isEmpty(phone)) {
-            phone_number_edit.setError("First Name is Required.");
+            phone_number_edit.setError("Phone number is Required.");
             return;
         }
 
         if (TextUtils.isEmpty(username)) {
-            username_edit.setError("First Name is Required.");
+            username_edit.setError("username is Required.");
             return;
         }
         if (age < 18 || age > 65) {
@@ -255,6 +262,11 @@ public class Person_Registration extends AppCompatActivity implements AsyncCallb
             Toast.makeText(Person_Registration.this, "Please select when was your last donation time?.", Toast.LENGTH_SHORT).show();
             return;
         }
+        if (terms_group == -1) {
+            Toast.makeText(Person_Registration.this, "Please accept our terms!.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
 
 
         user.setEmail(email);

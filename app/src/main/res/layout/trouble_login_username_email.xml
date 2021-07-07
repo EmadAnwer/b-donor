@@ -19,7 +19,7 @@
             android:id="@+id/trouble_username_email_inuser"
             android:layout_width="140dp"
             android:layout_height="wrap_content"
-            android:text="UserName"
+            android:text="Email"
             android:layout_marginTop="400dp"
             android:layout_marginLeft="40dp"
             android:backgroundTint="@color/light_gray"/>
@@ -37,7 +37,7 @@
     <EditText
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:hint="Username or email "
+        android:hint="Email "
         android:ems="20"
         android:inputType="number"
         android:textAlignment="center"

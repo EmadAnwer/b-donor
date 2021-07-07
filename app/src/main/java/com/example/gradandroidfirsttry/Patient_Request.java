@@ -45,7 +45,7 @@ public class Patient_Request extends AppCompatActivity {
     ArrayAdapter<String> arrayAdapter_city;
 
     ArrayList<String> arrayList_chooseTheHospital,arrayList_mokkattam, arrayList_fifthSettelment,
-            arrayList_madinetNasr,  arrayList_maaadi;
+            arrayList_madinetNasr,  arrayList_maaadi, arrayList_gesrElSwis ,arrayList_elAbbasaya;
     ArrayAdapter<String> arrayAdapter_hospital;
 
 
@@ -109,6 +109,8 @@ public class Patient_Request extends AppCompatActivity {
         arrayList_city.add("Fifth Settlement");
         arrayList_city.add("Madinet Nasr");
         arrayList_city.add("Maaadi");
+        arrayList_city.add("Gesr El-Swis");
+        arrayList_city.add("El-Abbasaya");
 
 
         arrayAdapter_city = new ArrayAdapter<>(getApplication(),
@@ -149,6 +151,17 @@ public class Patient_Request extends AppCompatActivity {
         arrayList_maaadi.add("El Farouq Hospital");
         arrayList_maaadi.add("DR. Alaa Ezzat Hospital");
 
+        arrayList_gesrElSwis = new ArrayList<>();
+        arrayList_gesrElSwis.add("Choose the hospital");
+        arrayList_gesrElSwis.add("Manshyet El-Bakry");
+        arrayList_gesrElSwis.add("Specialized El-Rehab");
+        arrayList_gesrElSwis.add("Specialized Gohaar");
+
+        arrayList_elAbbasaya = new ArrayList<>();
+        arrayList_elAbbasaya.add("Choose the hospital");
+        arrayList_elAbbasaya.add("EL-Demerdash");
+        arrayList_elAbbasaya.add("Specialized Ein Shams");
+        arrayList_elAbbasaya.add("El-Salam El-Khayry");
 
 
 
@@ -183,6 +196,16 @@ public class Patient_Request extends AppCompatActivity {
                 if (position==4)
                 {
                     arrayAdapter_hospital = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, arrayList_maaadi);
+
+                }
+                if (position==5)
+                {
+                    arrayAdapter_hospital = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, arrayList_gesrElSwis);
+
+                }
+                if (position==6)
+                {
+                    arrayAdapter_hospital = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, arrayList_elAbbasaya);
 
                 }
 
@@ -299,6 +322,10 @@ public class Patient_Request extends AppCompatActivity {
             return;
         }
 
+//        if (!(needed_quantity == -1)) {
+//            patient_needed_quantity.setError("Quantity is Required.");
+//            return;
+//        }
 
         if (blood_type_group == -1) {
             Toast.makeText(Patient_Request.this, "Please insert your Blood type.", Toast.LENGTH_SHORT).show();
