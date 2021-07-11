@@ -18,7 +18,7 @@
             android:id="@+id/trouble_username_email_inphone"
             android:layout_width="140dp"
             android:layout_height="wrap_content"
-            android:text="UserName"
+            android:text="Email"
             android:layout_marginTop="400dp"
             android:layout_marginLeft="40dp" />
 
