@@ -175,6 +175,23 @@ public class New_Setting_Frag extends Fragment {
 
         });
 
+        Button reports_btn = (Button) v.findViewById(R.id.reports_btn);
+        reports_btn.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                FragmentTransaction fragmentTransaction=getFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.setting_page_frg, new Analytics_Reports_fragment());
+                fragmentTransaction.addToBackStack(null);
+                Toast.makeText(getActivity(), "Reports Fragment" , Toast.LENGTH_LONG).show();
+                fragmentTransaction.commit();
+
+
+            }
+
+        });
+
 
         return v;
 
